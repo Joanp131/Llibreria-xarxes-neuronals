@@ -4,7 +4,9 @@ Què és això?
 
 Aquests arxius formen part d'un programa: una Xarxa neuronal artificial.
 
-Sobre la Xarxa Neuronal Artificial:
-*blah, blah, blah*
+**Sobre la Xarxa Neuronal Artificial:**
+```
+Aquest programa és una xarxa neuronal, creada amb javaScript. En iniciar-se, tria un color aleatori, i intenta endevinar si és un color clar o fosc, a partir dels principis de les xarxes neuronals. Al funcionar amb aprenentatge supervisat, si s'equivoca al dir el resultat, tu pots dir-li, i s'entrenarà; el que permetrà augmentar la possibilitat d'encertar el resultat més endavant. Després de molts exemples d'entrenament, hauria de començar a encertar un gran percentatge de les vegades.
+```
 
-Sobre els arxius:
+**Sobre els arxius:**
