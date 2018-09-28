@@ -12,4 +12,6 @@ Aquest programa és una xarxa neuronal, creada amb javaScript. En iniciar-se, tr
 **Sobre els arxius:**
 1. **Carpeta: P5.js:** P5.js és una llibreria de JavasCript que et permet implementar les funcions de [Processing](https://processing.org/) en el navegador. Podeu consultar més informació a [la seva pàgina oficial](https://p5js.org/)
 
-2. **Index.HTML:** HTML és un llenguatge de programació que et permet crear pàgines web. L'arxiu *index.HTML* és l'arxiu que s'ha d'executar per iniciar la xarxa neuronal artificial. Com a aplicació per defecte s'utilitza el navegador web predeterminat 
+2. **Index.HTML:** HTML és un llenguatge de programació que et permet crear pàgines web. L'arxiu *index.HTML* és l'arxiu que s'ha d'executar per iniciar la xarxa neuronal artificial. Com a aplicació per defecte s'utilitza el navegador web predeterminat. També és l'arxiu que s'encarrega d'executar els programes i que la pàgina web funcioni.
+
+3. **Matrix.js:** Les xarxes neuronals, per la seva complexitat, utilitzen matrius. *Matrix.js* és una llibreria a on hi ha les funcions bàsiques de les matrius compoden ser: suma, resta, multiplicació i translació. I altres funcions necessaries per fer funcionar la xarxa. Va ser creada per [Daniel Shiffman](https://github.com/shiffman), en el seu canal de YouTube [TheCodingTrain](https://www.youtube.com/watch?v=uSzGdfdOoG8&index=6&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh)
