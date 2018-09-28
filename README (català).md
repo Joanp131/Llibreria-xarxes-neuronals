@@ -11,3 +11,5 @@ Aquest programa és una xarxa neuronal, creada amb javaScript. En iniciar-se, tr
 
 **Sobre els arxius:**
 1. **Carpeta: P5.js:** P5.js és una llibreria de JavasCript que et permet implementar les funcions de [Processing](https://processing.org/) en el navegador. Podeu consultar més informació a [la seva pàgina oficial](https://p5js.org/)
+
+2. **Index.HTML: ** HTML és un llenguatge de programació que et permet crear pàgines web. L'arxiu index.HTML és l'arxiu que s'ha d'executar per iniciar la xarxa neuronal artificial. Com a aplicació per defecte s'utilitza el navegador web predeterminat 
