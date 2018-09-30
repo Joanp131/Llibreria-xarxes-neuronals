@@ -11,3 +11,5 @@ This program is an artificial neural network, created with JavasCript. At the st
 **About the archives.**
 
 1. **Carpet: P5.js:** p5.js is a javascript library that allows you to implement [Processing](https://processing.org/) functions in the web browser. More information at their [official web page](https://p5js.org/).
+
+2. **Index.HTML:** HTML is a programming language that allows you to create webpages. the archive *Index.HTML* is the archive that has to be executed in order to inicaite the artificial neural network in the browser. the default application used to open it is the default web browser of your computer
