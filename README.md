@@ -10,4 +10,4 @@ This program is an artificial neural network, created with JavasCript. At the st
 
 **About the archives.**
 
-1.**Carpet: P5.js:** p5.js is a javascript library that allows you to implement [Processing](https://processing.org/) functions in the web browser. More information at their [official web page](https://p5js.org/).
+1. **Carpet: P5.js:** p5.js is a javascript library that allows you to implement [Processing](https://processing.org/) functions in the web browser. More information at their [official web page](https://p5js.org/).
