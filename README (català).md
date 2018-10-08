@@ -21,3 +21,5 @@ Aquest programa és una xarxa neuronal, creada amb javaScript. En iniciar-se, tr
 5. **Server.bat:** Aquest arxiu consta d'una línea de codi que serveix per crear un servidor local per poder executar la xarxa neuronal. Només funciona en ordinadors amb el sistema operatiu *Windows* i amb python v.3 o superior instal·lat.
 
 6. **Sketch.js:** *Sketch.js* és el programa encargat de triar un color aleatori, preguntar a l'usuari si el color és clar o fosc i fer funcionar la xarxa neuronal enviant-li les senyals d'entrada.
+
+Hola
