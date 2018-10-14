@@ -1,6 +1,13 @@
 window.onload = function() {
+  /* Què fa aquesta funció?
+    1. borra la consola
+    2. Inicia sessió a Firebase i obté les dades 
+  */
+
+  //1
   console.clear();
 
+  //2
   var config = {
       apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
       authDomain: "weights-b4e62.firebaseapp.com",
