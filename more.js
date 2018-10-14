@@ -23,28 +23,28 @@ window.onload = function() {
     ref.on('value', gotData, errData)
 }
 
- function saveWeights() {
-   console.log("Sending data to firebase...");
+function saveWeights() {
+  console.log("Sending data to firebase...");
 
-   let weightsDatabase = database.ref('weights');
+  let weightsDatabase = database.ref('weights');
 
-   let weights = {
-     wih1: nn.ih1_weights.data,
-     wh1h2: nn.h1h2_weights.data,
-     wh2o: nn.h2o_weights.data
-   }
+  let weights = {
+    wih1: nn.ih1_weights.data,
+    wh1h2: nn.h1h2_weights.data,
+    wh2o: nn.h2o_weights.data
+  }
 
-   let send = weightsDatabase.push(weights, finished)
- }
+  let send = weightsDatabase.push(weights, finished)
+}
 
- function finished(err) {
-   if(err) {
-     console.warn("Ooops, something went wrong with firebase!");
-     console.log(err)
-   } else {
-     console.warn("Data saved successfully!");
-   }
- }
+function finished(err) {
+  if(err) {
+    console.warn("Ooops, something went wrong with firebase!");
+    console.log(err)
+  } else {
+    console.warn("Data saved successfully!");
+  }
+}
 
 function gotData(data) {
   let weights = data.val()
