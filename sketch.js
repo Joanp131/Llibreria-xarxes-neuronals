@@ -19,13 +19,20 @@ function setup() {
     Function setup. Principals funcions:
       1. Generar el canvas a on anirà el color
       2. Demanar un color aleatori pel fons
-      3. Crear un botó per fer funcionar la xarxa neuronal artificial
+      3. Iniciar un objecte "Xarxa neuronal"
+      4. Crear botons per fer funcionar la xarxa
   */
-  console.log("here");
+
+  //1
   canvas = createCanvas(200, 200).attribute('id', 'canvas')
+
+  //2
   getColor()
+
+  //3
   nn = new NeuralNetwork(3, 2, 4, 2);
-  console.log("here");
+
+  //4
   confrim = createButton('run').attribute('onclick', 'run()')
   createButtons();
 }
