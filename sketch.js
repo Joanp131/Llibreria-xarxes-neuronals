@@ -76,8 +76,6 @@ function train() {
 
   /* Què ha de fer aquesta funció?
     1. Ha de preguntar a la persona si el color era clar o fosc
-        (De moment es demana a la persona que escrigui que era el color, però lo millor seria que a
-        l'alert hi hagués dos botons amb cada una de les possibilitats)
     2. S'ha de posar el valor del resultat esperat en un array per entrenar la xarxa neuronal artificial
     3. Amb la resposta de la xarxa neuronal i la resposta real s'ha d'entrenar la xarxa neuronal
     4. Quan la xarxa ja hagui entrenat, generar un nou color com a fons
@@ -91,6 +89,7 @@ function train() {
     result = "fosc"
   }
 
+  //2
   if(confirm(`És un color ${result}`)) {
     if (result == "clar") {
       realAns = [1, 0]
@@ -105,9 +104,6 @@ function train() {
     }
   }
   console.table(realAns);
-
-
-  //2.
 
   //3.
   nn.backpropagation(answer, realAns)
@@ -130,7 +126,7 @@ function getColor() {
 
   //2.
   if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0) {
-    console.error("Something happened while choosingg the background color")
+    console.error("Something happened while choosing the background color")
     console.log(`red: ${r}, green: ${g}, blue: ${b}`)
   } else {
     background(r, g, b)
