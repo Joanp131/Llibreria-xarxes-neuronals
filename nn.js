@@ -121,6 +121,7 @@ class NeuralNetwork {
 
     //2.
     this.outErr = Matrix.subtract(this.realAns, this.guess)
+    this.outErr.print();
 
     //3.
     this.h2o_weights_t = Matrix.transpose(this.h2o_weights)
