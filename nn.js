@@ -20,6 +20,11 @@ function softmax(arr) {
 
 }
 
+function dsigmoid(y) {
+  return y * (1-y)
+
+}
+
 class NeuralNetwork {
   constructor(inputs, hidden_cols, hidden_nodes, output_nodes) {
     this.inputs = inputs
@@ -35,6 +40,8 @@ class NeuralNetwork {
     this.h2o_weights = new Matrix(this.output_nodes, this.hidden_nodes2)
     //this.h2o_weights.randomize()
     //initializeWeights()
+
+
   }
 
   feedforward(input_values) {
@@ -103,7 +110,8 @@ class NeuralNetwork {
     return result_array
   }
 
-  backpropagation(guess, realAns) {
+  backpropagation(ans, realAns) {
+    let learning_rate = 0.1
 
     /* Què fa aquesta funció?
       1. Agafa els valors que ha calculat com a senyal de sortida i els reals i els passa a matrius.
@@ -111,12 +119,14 @@ class NeuralNetwork {
       2. Calcula l'error de la columna 'output'
       3. Calcula l'error de les capes ocultes
       4. Calcula l'error de la capa d'entrada
-      5. Falta fer la part en la que es calcula el 'deltaWeight' i es suma als pesos corresponents
+      5. Calcular "gradient" de la resposta de la xarxa
     */
     console.warn('backpropagation has started')
 
     //1.
-    this.guess = Matrix.fromArray(guess)
+    this.guess = Matrix.fromArray(ans)
+    console.log("Print guess:");
+    this.guess.print()
     this.realAns = Matrix.fromArray(realAns)
 
     //2.
@@ -133,6 +143,24 @@ class NeuralNetwork {
     //4.
     this.ih1_weights_t = Matrix.transpose(this.ih1_weights)
     this.err_int = Matrix.multiply(this.ih1_weights_t, this.err_h1)
+
+    //5.
+    let gradients = Matrix.map(this.guess, dsigmoid)
+    console.log("Gradients 1:")
+    gradients.print()
+
+    gradients.multiply(this.outErr)
+    console.log("Gradients 1:")
+    gradients.print()
+
+    gradients.multiply(learning_rate)
+    console.log("Gradients 1:")
+    gradients.print()
+
+    let hidden2_T = Matrix.transpose(this.hidden2_ans)
+    let weights_h2o_deltas = Matrix.multiply(gradients, hidden2_T)
+
+    this.h2o_weights.add(weights_h2o_deltas)
 
     saveWeights();
     //initializeWeights()

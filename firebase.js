@@ -1,7 +1,6 @@
-window.onload = function() {
-  /* Què fa aquesta funció?
+window.onload = function() {/* Què fa aquesta funció?
     1. borra la consola
-    2. Inicia sessió a Firebase i obté les dades 
+    2. Inicia sessió a Firebase i obté les dades
   */
 
   //1

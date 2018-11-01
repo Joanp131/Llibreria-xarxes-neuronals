@@ -117,7 +117,7 @@ add(n){
 
   static multiply(a, b) {
     if (a.cols !== b.rows) {
-      console.error('Invalid Matrix mutiplication')
+      console.error("Invalid Matrix mutiplication")
       return undefined
     }
     let result = new Matrix(a.rows, b.cols)
@@ -134,12 +134,33 @@ add(n){
   }
   //Scalar multiplication
   multiply(n){
-      //Scalar product
-      for (let i = 0; i < this.rows; i++) {
-        for (let j = 0; j < this.cols; j++) {
-          this.data[i][j] *= n
+      if(n instanceof Matrix) {
+        if(this.cols !== n.rows) {
+          console.error("Colums of A must match rows of B")
+          return undefined
         }
-      }
+        let a = this
+        let b = n
+        let result = new Matrix(a.rows, b.cols)
+
+        for(let i = 0; i < result.rows; i++) {
+          for(let j = 0; j < result.cols; j++){
+            let sum = 0
+            for (let k = 0; k < a.cols; k++) {
+              sum += a.data[i][k] * b.data[k][j]
+            }
+            result.data[i][j] = sum
+          }
+        }
+        return result
+      } else {
+      //Scalar product
+        for (let i = 0; i < this.rows; i++) {
+          for (let j = 0; j < this.cols; j++) {
+            this.data[i][j] *= n
+          }
+        }
+    }
   }
 
   map(fn){
@@ -150,6 +171,18 @@ add(n){
           this.data[i][j] = fn(val)
         }
       }
+  }
+
+  static map(matr, fn) {
+    let result = new Matrix(matr.rows, matr.cols)
+
+    for (let i = 0; i < matr.rows; i++) {
+      for (let j = 0; j < matr.cols; j++) {
+        let val = matr.data[i][j]
+        result.data[i][j] = fn(val)
+      }
+    }
+    return result
   }
 
   print() {
