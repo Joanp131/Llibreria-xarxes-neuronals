@@ -1,26 +1,27 @@
 import numpy as np
-import math as math
+import math as m
 
-hidden = np.matrix('3;2;8;-5')
+hidden=0
+weights=0
 
-#Weights are labeled from output to hidden
-weights = np.matrix('0.1,0.2,0.3,0.4;0.5,0.6,0.7,0.8')
-print(hidden)
-print(weights)
+def main():
+    hidden = np.matrix('3;2;8;-5')
 
-def CrossEntropy(yHat, y):
-    if yhat == 1:
-      x = -math.log10(y)
-      print( "Node 1 err: ", x )
-    else:
-      z = -math.log10(1 - y)
-      print( "Node 2 err: ", z )
+    #Weights are labeled from output to hidden
+    weights = np.random.rand(2,4)
 
-y1 = float(input("Answer given by NN that should be one: "))
-y0 = 1-y1
-yhat = 1
+def CrossEntropy(p, y):
+    return -(y*m.log10(p) + (1-y)*m.log(1-p))
 
-print("Y1: ", y1, "\t||\tY0: ", y0)
+def feedforward(inputs, weights):
+    z = np.dot(weights, inputs)
+    sm = softmax(z)
+    print(sm)
 
-CrossEntropy(1, y1)
-CrossEntropy(0, y0)
+def softmax(X):
+    exps = np.exp(X)
+    return exps / np.sum(exps)
+
+main()
+feedforward(hidden, weights)
+#printOUT()
