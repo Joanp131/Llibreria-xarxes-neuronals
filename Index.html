@@ -12,5 +12,35 @@
     <script src="sketch.js"></script>
     <script src="Matrix.js"></script>
     <script src="firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
+
+  <body>
+    <center>
+      <div id="canvas"></div>
+
+      <div id="buttons">
+        <table>
+            <tr class="table_header">
+                <th>Weights</th>
+                <th>Result</th>
+                <th>Error</th>
+            </tr>
+            <tr>
+                <td>
+                    <button id="weights1">Input - Hidden 1</button>
+                </td>
+
+                <td>
+                    <button id="weights2">Hidden 1 - Hidden 2</button>
+                </td>
+
+                <td>
+                    <button id="weights1">Hidden 2 - Output</button>
+                </td>
+            </tr>
+        </table>
+      </div>
+      </center>
+  </body>
 </html>

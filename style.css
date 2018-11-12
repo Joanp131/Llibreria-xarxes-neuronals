@@ -1,0 +1,12 @@
+html, body {
+	margin: 5px;
+	font-size: 15pt;
+}
+
+table, tr, th, td {
+	padding: 5px;
+	margin: 2px;
+}
+th {
+	background-color: rgba(0, 0, 0, 0.2);
+}

@@ -24,8 +24,10 @@ function setup() {
   */
 
   //1
+  father = document.getElementById('canvas')
   canvas = createCanvas(200, 200).attribute('id', 'canvas')
-
+  canvas.parent(father)
+  confrim = createButton('run').attribute('onclick', 'run()')
   //2
   getColor()
 
@@ -33,8 +35,8 @@ function setup() {
   nn = new NeuralNetwork(3, 2, 4, 2);
 
   //4
-  confrim = createButton('run').attribute('onclick', 'run()')
-  createButtons();
+  
+  //createButtons();
 }
 
 function run() {
