@@ -6,13 +6,17 @@ import time as t
 Feedforward
 """
 time1 = t.time()
+
+
 def CrossEntropy(p, y):
     return -(y*m.log10(p) + (1-y)*m.log(1-p))
+
 
 def feedforward(inputs, weights):
     z = np.dot(weights, inputs)
     sm = softmax(z)
     print(sm)
+
 
 def softmax(X):
     exps = np.exp(X)
@@ -32,5 +36,5 @@ print("Time for feedforward: ", totaltime, "millis")
 Backpropagation
 """
 ans = np.matrix('1;0')
-print("Ans: ", ans)
+print(ans, "Ans: ")
 
