@@ -4,7 +4,7 @@ window.onload = function() {/* Què fa aquesta funció?
   */
 
   //1
-  console.clear();
+  //console.clear();
 
   //2
   var config = {
