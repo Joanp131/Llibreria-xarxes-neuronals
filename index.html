@@ -1,6 +1,8 @@
-<html><head>
+<!DOCTYPE html>
+<html>
+    <head>
         <meta charset="utf-8">
-        <meta name="viewport" width="device-width," initial-scale="1.0," maximum-scale="1.0," user-scalable="0">
+        <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
         <title>Treball de recerca</title>
         <style>
             body {
@@ -12,10 +14,10 @@
         <script src="p5.js/p5.dom.min.js"></script>
         <script src="p5.js/p5.sound.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-        <!--<script src="scripts/nn.js"></script>-->
+        <script src="scripts/nn.js"></script>
         <script src="scripts/sketch.js"></script>
-        <!--<script src="scripts/Matrix.js"></script>-->
-        <!--<script src="scripts/firebase.js"></script>-->
+        <script src="scripts/Matrix.js"></script>
+        <script src="scripts/firebase.js"></script>
         <script src="scripts/text.js"></script>
         <link rel="stylesheet" type="text/css" href="scripts/style.css">
         <link rel="icon" href="sources/icon.png">
@@ -25,11 +27,11 @@
         <center>
             <!-- Conté el canvas de la xarxa neuronal, el botó per fer-la funcionar i les taules que poden aparèixer-->
             <div id="nn_container">
-                <div id="canvas" style="display: inline;"><canvas id="color" class="p5Canvas" data-hidden="true" width="200" height="200" style="/* visibility: hidden; */width: 200px;height: 200px;"></canvas></div>
+                <div id="canvas" style="display: inline;"></div>
                 <div id="text_container" style="display: inline; height: 200px">
                     <!-- Every tble that can appear when click on the buttons-->
                     <table id="weights1_table" class="table" style="display: none; width: 0px;">
-                        <tbody><tr>
+                        <tr>
                             <td>Hola!
                         </td>
                             <td>Hola!
@@ -41,9 +43,9 @@
                             <td>Adéu!
                         </td>
                         </tr>
-                    </tbody></table>
+                    </table>
                 </div>
-                <div id="run"><button onclick="run()">run</button></div>
+                <div id="run"></div>
             </div>
             <!-- Conté la taula amb tots els botons-->
             <div id="buttons">
@@ -111,6 +113,5 @@
                 </table>
             </div>
         </center>
-    
-
-</body></html>
+    </body>
+</html>
