@@ -4,7 +4,7 @@ html, body {
 }
 
 table {
-	margin: 5px;
+	/*margin: 5px;*/
 }
 
 tr, th, td {
@@ -19,12 +19,8 @@ th {
 	background-color: rgba(0, 0, 0, 0.2);
 	border: 1px solid black;
 }
-tr {
-	margin-top: 10px;
-}
 td {
 	padding: 1px;
-	margin: 200px;
 }
 button {
 	cursor: pointer;
@@ -36,11 +32,11 @@ button {
 	width: 200px;
 }
 #buttons {
-	margin: 10px;
+	margin-top: 20px;
 }
 #canvas {
 	width: 200px;
 	height: 200px;
-	margin-bottom: 0px;
+	/*margin-bottom: 0px;*/
 	padding: 0px;
 }
