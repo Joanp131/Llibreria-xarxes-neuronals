@@ -30,7 +30,7 @@ function setup() {
   canvas.parent(father[0])
 
   father[1] = document.getElementById('run')
-  confrim = createButton('run').attribute('onclick', 'run()').parent(father[1])
+  confrim = createButton('train').attribute('onclick', 'train()').parent(father[1])
   //2
   getColor()
 
@@ -42,7 +42,7 @@ function setup() {
   //createButtons();
 }
 
-function run() {
+function train() {
 
   /* Que ha de fer aquesta funció?
     1. Ha d'aafar el valor del color i entrar-lo en un array
@@ -73,19 +73,6 @@ function run() {
     console.log(`Això és un color fosc, ${perc2}% segur`)
   }
 
-  //5.
-  train();
-}
-
-function train() {
-
-  /* Què ha de fer aquesta funció?
-    1. Ha de preguntar a la persona si el color era clar o fosc
-    2. S'ha de posar el valor del resultat esperat en un array per entrenar la xarxa neuronal artificial
-    3. Amb la resposta de la xarxa neuronal i la resposta real s'ha d'entrenar la xarxa neuronal
-    4. Quan la xarxa ja hagui entrenat, generar un nou color com a fons
-  */
-
   //1.
   let result
   if (perc1 >= 50) {
@@ -115,7 +102,19 @@ function train() {
 
   //4.
   getColor()
-  }
+}
+
+function run() {
+
+  /* Què ha de fer aquesta funció?
+    1. Ha de preguntar a la persona si el color era clar o fosc
+    2. S'ha de posar el valor del resultat esperat en un array per entrenar la xarxa neuronal artificial
+    3. Amb la resposta de la xarxa neuronal i la resposta real s'ha d'entrenar la xarxa neuronal
+    4. Quan la xarxa ja hagui entrenat, generar un nou color com a fons
+  */
+
+  
+}
 
 function getColor() {
 

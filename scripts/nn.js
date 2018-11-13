@@ -1,170 +1,123 @@
 function normalize(x) {
-  return x /= 255
-}
+  return x /= 255;
+};
 
 function sigmoid(z) {
-  return 1 / (1 + Math.exp(-z))
-}
+  return 1 / (1 + Math.exp(-z));
+};
 
 function softmax(arr) {
   let esum = 0;
-  let result = []
+  let result = [];
   for(let i = 0; i < arr.length; i++) {
-    esum += Math.exp(arr[i])
-  }
+    esum += Math.exp(arr[i]);
+  };
 
   for (let i = 0; i < arr.length; i++) {
-    result[i] = Math.exp(arr[i]) / esum
-  }
-  return result
+    result[i] = Math.exp(arr[i]) / esum;
+  };
+  return result;
 
-}
+};
 
 function dsigmoid(y) {
-  return y * (1-y)
+  return y * (1-y);
 
-}
+};
+
+function crossEntropy(yhat, y) {
+  if (yhat instanceof Matrix && y instanceof Matrix && yhat.rows === 2 && y.rows === 2) {
+    let result = new Matrix(2, 1);
+    for (let i = 0; i < result.rows; i++) {
+      result.data[i][0] = -(y.data[i][0]*Math.log10(yhat[i]) + (1 - y.data[i]) * Math.log10(1 - yhat[i]));
+    return result;
+    };
+  } else {
+    console.log("Something went wrong...");
+  } 
+};
 
 class NeuralNetwork {
   constructor(inputs, hidden_cols, hidden_nodes, output_nodes) {
-    this.inputs = inputs
-    this.hidden_cols = hidden_cols
-    this.hidden_nodes1 = hidden_nodes
-    this.hidden_nodes2 = hidden_nodes
-    this.output_nodes = output_nodes
+    this.inputs = inputs;
+    this.hidden_cols = hidden_cols;
+    this.hidden_nodes1 = hidden_nodes;
+    this.hidden_nodes2 = hidden_nodes;
+    this.output_nodes = output_nodes;
 
     this.ih1_weights = new Matrix(this.hidden_nodes1, this.inputs);
-    //this.ih1_weights.randomize()
+    /*this.ih1_weights.randomize()*/
     this.h1h2_weights = new Matrix(this.hidden_nodes2, this.hidden_nodes1);
-    //this.h1h2_weights.randomize()
-    this.h2o_weights = new Matrix(this.output_nodes, this.hidden_nodes2)
-    //this.h2o_weights.randomize()
-    //initializeWeights()
-
-
-  }
+    /*this.h1h2_weights.randomize()*/
+    this.h2o_weights = new Matrix(this.output_nodes, this.hidden_nodes2);
+    /*this.h2o_weights.randomize()*/
+  };
 
   feedforward(input_values) {
-    console.warn("Feedforward has started");
-    /* Què ha de fer aquesta funció?
-      1. Agafar les senyals d'entrada que ha rebut i convertir-les en matrius
-      2. Normalitar aquestes senyals d'entrada
-      3. Obtenir les respostes de la capa oculta
-      4. Obtenir les respostes i passar-les a array
-      5. Passar els resultats per la funció softmax i retornar-los
-    */
-    //console.clear()
+    
+    /*console.clear()*/
 
-    //1.
-    this.input_values = new Matrix(input_values.length, 1)
+    /*Transforms input array into a 3x1 matrix*/
+    this.input_values = new Matrix(input_values.length, 1);
     for (let i = 0; i < input_values.length; i++) {
-        this.input_values.data[i][0] = input_values[i]
-    }
+        this.input_values.data[i][0] = input_values[i];
+    };
+    
+    /* Normalizes the values of the input matrix by dividing each one by 255 (max rgb value) */
+    this.input_values.map(normalize);
 
-    console.log("Input values: ");
-    this.input_values.print()
-    //2.
-    this.input_values.map(normalize)
-
-    //3.
+    /* Calculates the result of the Hidden 1 layer by doing "z = w * x" */
     this.hidden1_ans = Matrix.multiply(this.ih1_weights, this.input_values);
-    this.hidden1_ans.map(sigmoid)
+    this.hidden1_ans.map(sigmoid);
 
-    this.hidden2_ans = Matrix.multiply(this.h1h2_weights, this.hidden1_ans)
-    this.hidden2_ans.map(sigmoid)
+    /* Calculates the result of the second column of the hidden layer */
+    this.hidden2_ans = Matrix.multiply(this.h1h2_weights, this.hidden1_ans);
+    this.hidden2_ans.map(sigmoid);
 
-    //4.
-    this.output_ans = Matrix.multiply(this.h2o_weights, this.hidden2_ans)
+    /* Calculates the output and enters the values in an array */
+    this.output_ans = Matrix.multiply(this.h2o_weights, this.hidden2_ans);
     let output_array = this.output_ans.toArray();
 
-    /*-----------Printing things-------------------------------------Printing things-------------------------------------------------------------------------------
-    //console.log("Input to hidden 1 weights: ")
-    //this.ih1_weights.print()
+    /* Normalizes the output with the softmax function */
+    this.result_array = softmax(output_array);
 
-    //console.log("Hidden 1 answers: ")
-    //this.hidden1_ans.print()
-
-    //console.log("Hidden 1 to hidden 2 weights")
-    //this.h1h2_weights.print()
-
-    //console.log("Hidden 2 answers: ")
-    //this.hidden2_ans.print()
-
-    //console.log("Hidden 2 to output weights")
-    //this.h2o_weights.print()
-
-    //console.log("Outputs: ")
-    //this.output_ans.print()
-
-    //console.log("Output array: ")
-    //console.table(output_array);
-    */
-
-    //5.
-    let result_array = softmax(output_array)
-    console.log("Result array: ");
-    console.table(result_array);
-
-    console.warn("Feedforward has ended");
-
-    return result_array
-  }
+    /* Returns the result */
+    return this.result_array;
+  };
 
   backpropagation(ans, realAns) {
-    let learning_rate = 0.1
+    let learning_rate = 0.1;
 
-    /* Què fa aquesta funció?
-      1. Agafa els valors que ha calculat com a senyal de sortida i els reals i els passa a matrius.
-        Hi ha un problema en aquesta part: La funció que serveix per passar els arrays a matrius només serveix en aquest cas, per tant no es pot utilitzar per guardar els pesos.
-      2. Calcula l'error de la columna 'output'
-      3. Calcula l'error de les capes ocultes
-      4. Calcula l'error de la capa d'entrada
-      5. Calcular "gradient" de la resposta de la xarxa
-    */
-    console.warn('backpropagation has started')
-
-    //1.
-    this.guess = Matrix.fromArray(ans)
-    console.log("Print guess:");
-    this.guess.print()
-    this.realAns = Matrix.fromArray(realAns)
+    /*  */
+    this.guess = Matrix.fromArray(ans);
+    this.realAns = Matrix.fromArray(realAns);
 
     //2.
-    this.outErr = Matrix.subtract(this.realAns, this.guess)
-    this.outErr.print();
+    this.outErr = crossEntropy(this.guess, this.realAns);
 
     //3.
-    this.h2o_weights_t = Matrix.transpose(this.h2o_weights)
-    this.err_h2 = Matrix.multiply(this.h2o_weights_t, this.outErr)
+    this.h2o_weights_t = Matrix.transpose(this.h2o_weights);
+    this.err_h2 = Matrix.multiply(this.h2o_weights_t, this.outErr);
 
-    this.h1h2_weights_t = Matrix.transpose(this.h1h2_weights)
-    this.err_h1 = Matrix.multiply(this.h1h2_weights_t, this.err_h2)
+    this.h1h2_weights_t = Matrix.transpose(this.h1h2_weights);
+    this.err_h1 = Matrix.multiply(this.h1h2_weights_t, this.err_h2);
 
     //4.
-    this.ih1_weights_t = Matrix.transpose(this.ih1_weights)
-    this.err_int = Matrix.multiply(this.ih1_weights_t, this.err_h1)
+    this.ih1_weights_t = Matrix.transpose(this.ih1_weights);
+    this.err_int = Matrix.multiply(this.ih1_weights_t, this.err_h1);
 
     //5.
-    let gradients = Matrix.map(this.guess, dsigmoid)
-    console.log("Gradients 1:")
-    gradients.print()
+    let gradients = Matrix.map(this.guess, dsigmoid);
 
-    gradients.multiply(this.outErr)
-    console.log("Gradients 1:")
-    gradients.print()
+    gradients.multiply(this.outErr);
 
-    gradients.multiply(learning_rate)
-    console.log("Gradients 1:")
-    gradients.print()
+    gradients.multiply(learning_rate);
 
-    let hidden2_T = Matrix.transpose(this.hidden2_ans)
-    let weights_h2o_deltas = Matrix.multiply(gradients, hidden2_T)
+    let hidden2_T = Matrix.transpose(this.hidden2_ans);
+    let weights_h2o_deltas = Matrix.multiply(gradients, hidden2_T);
 
-    this.h2o_weights.add(weights_h2o_deltas)
+    this.h2o_weights.add(weights_h2o_deltas);
 
     saveWeights();
-    //initializeWeights()
-
-    console.warn('backpropagation has ended')
-  }
+  };
 }

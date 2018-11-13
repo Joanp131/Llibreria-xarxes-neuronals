@@ -27,8 +27,8 @@
         <center>
             <!-- Conté el canvas de la xarxa neuronal, el botó per fer-la funcionar i les taules que poden aparèixer-->
             <div id="nn_container">
-                <div id="canvas" style="display: inline;"></div>
-                <div id="text_container" style="display: inline; height: 200px">
+                <div id="canvas" style="display: inline-block;"></div>
+                <div id="text_container" style="display: inline-block; height: 200px">
                     <!-- Every tble that can appear when click on the buttons-->
                     <table id="weights1_table" class="table" style="display: none; width: 0px;">
                         <tr>
@@ -65,7 +65,7 @@
                                 <button id="weights1" onclick="weights1()">Input - Hidden 1</button>
                             </td>
                             <td>
-                                <button id="result1">Input</button>
+                                <button id="result1" onclick="result1()">Input</button>
                             </td>
                             <td>
                                 <button id="error1">Hidden 2 - Output</button>
@@ -73,10 +73,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <button id="weights2">Input - Hidden 1</button>
+                                <button id="weights2" onclick="weights2()">Hidden 1 - Hidden 2</button>
                             </td>
                             <td>
-                                <button id="result2">Hidden 1</button>
+                                <button id="result2" onclick="result2()">Hidden 1</button>
                             </td>
                             <td>
                                 <button id="error2">Hidden 2 - Output</button>
@@ -84,19 +84,19 @@
                         </tr>
                         <tr>
                             <td>
-                                <button id="weights3">IHidden 2 - Output</button>
+                                <button id="weights3" onclick="weights3()">Hidden 2 - Output</button>
                             </td>
                             <td>
-                                <button id="result3">HHidden 2</button>
+                                <button id="result3" onclick="result3()">HHidden 2</button>
                             </td>
                             <td>
-                                <button id="error3">Hidden 2 - Output</button>
+                                <button id="error3" onclick="error3()">Output</button>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <button id="result4">Output</button>
+                                <button id="result4" onclick="result4()">Output</button>
                             </td>
                             <td></td>
                         </tr>

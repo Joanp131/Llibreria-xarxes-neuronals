@@ -26,11 +26,13 @@ function saveWeights() {
   console.log("Sending data to firebase...");
 
   let weightsDatabase = database.ref('weights');
+  let colors = [r, g, b]
 
   let weights = {
     wih1: nn.ih1_weights.data,
     wh1h2: nn.h1h2_weights.data,
-    wh2o: nn.h2o_weights.data
+    wh2o: nn.h2o_weights.data,
+    color: colors
   }
 
   let send = weightsDatabase.push(weights, finished)
