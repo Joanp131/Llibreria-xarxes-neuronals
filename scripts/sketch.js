@@ -26,7 +26,7 @@ function setup() {
 
   //1
   father[0] = document.getElementById('canvas')
-  canvas = createCanvas(200, 200).attribute('id', 'color')
+  canvas = createCanvas(200, 200).attribute('id', 'color').style('visibility','shown')
   canvas.parent(father[0])
 
   father[1] = document.getElementById('run')
