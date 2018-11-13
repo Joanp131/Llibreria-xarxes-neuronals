@@ -11,6 +11,7 @@
 
 let input = []
 let answer = []
+let father = []
 let nn;
 let r, g, b
 
@@ -24,10 +25,12 @@ function setup() {
   */
 
   //1
-  father = document.getElementById('canvas')
+  father[0] = document.getElementById('canvas')
   canvas = createCanvas(200, 200).attribute('id', 'canvas')
-  canvas.parent(father)
-  confrim = createButton('run').attribute('onclick', 'run()')
+  canvas.parent(father[0])
+
+  father[1] = document.getElementById('run')
+  confrim = createButton('run').attribute('onclick', 'run()').parent(father[1])
   //2
   getColor()
 

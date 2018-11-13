@@ -12,35 +12,120 @@
     <script src="sketch.js"></script>
     <script src="Matrix.js"></script>
     <script src="firebase.js"></script>
+    <script src="text.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="icon.png">
   </head>
 
   <body>
+    <!-- Vull que tot el document estigui centrat-->
     <center>
-      <div id="canvas"></div>
 
-      <div id="buttons">
-        <table>
-            <tr class="table_header">
-                <th>Weights</th>
-                <th>Result</th>
-                <th>Error</th>
-            </tr>
-            <tr>
-                <td>
-                    <button id="weights1">Input - Hidden 1</button>
-                </td>
+        <!-- Conté el canvas de la xarxa neuronal, el botó per fer-la funcionar i les taules que poden aparèixer-->
+        <div>
+            <div id="canvas" style="display: inline;"></div>
+            <div id="text_container" style="width: 0px; height: 200px; display: inline;">
+                <!-- Every tble that can appear when click on the buttons-->
+                <table id="weights1_table" class="table" style="display: none; width: 0px;">
+                    <tr>
+                        <td>
+                            Hola!
+                        </td>
 
-                <td>
-                    <button id="weights2">Hidden 1 - Hidden 2</button>
-                </td>
+                        <td>
+                            Hola!
+                        </td>
+                    </tr>
 
-                <td>
-                    <button id="weights1">Hidden 2 - Output</button>
-                </td>
-            </tr>
-        </table>
-      </div>
-      </center>
+                    <tr>
+                        <td>
+                            Adéu!
+                        </td>
+
+                        <td>
+                            Adéu!
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="run"></div>
+        </div>
+      
+        <!-- Conté la taula amb tots els botons-->
+        <div id="buttons">
+            <table>
+
+                <!-- Títol de la taula-->
+                <tr class="table_header">
+                    <th>Weights</th>
+                    <th>Result</th>
+                    <th>Error</th>
+                </tr>
+
+                <!-- Primera fila-->
+                <tr>
+                    <td>
+                        <button id="weights1" onclick="weights1()">Input - Hidden 1</button>
+                    </td>
+
+                    <td>
+                        <button id="result1">Input</button>
+                    </td>
+
+                    <td>
+                        <button id="error1">Hidden 2 - Output</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button id="weights2">Input - Hidden 1</button>
+                    </td>
+
+                    <td>
+                        <button id="result2">Hidden 1</button>
+                    </td>
+
+                    <td>
+                        <button id="error2">Hidden 2 - Output</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button id="weights3">IHidden 2 - Output</button>
+                    </td>
+
+                    <td>
+                        <button id="result3">HHidden 2</button>
+                    </td>
+
+                    <td>
+                        <button id="error3">Hidden 2 - Output</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+
+                    <td>
+                        <button id="result4">Output</button>
+                    </td>
+
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+
+                    <td>
+                        <button id="clear" onclick="clearText()">Clear text</button>
+                    </td>
+
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </center>
   </body>
 </html>
