@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+        <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/72E1888F-2A77-BE49-852F-BE06FE17ED85/main.js" charset="UTF-8"></script>
+        <script src="p5.js/p5.min.js"></script>
+        <script src="p5.js/p5.dom.min.js"></script>
+        <script src="p5.js/p5.sound.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script src="nn.js"></script>
+        <script src="sketch.js"></script>
+        <script src="Matrix.js"></script>
+        <script src="firebase.js"></script>
+        <script src="text.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="icon.png">
+    </head>
+    <body>
+        <!-- Vull que tot el document estigui centrat-->
+        <center>
+            <!-- Conté el canvas de la xarxa neuronal, el botó per fer-la funcionar i les taules que poden aparèixer-->
+            <div id="nn_container">
+                <div id="canvas" style="display: inline;"></div>
+                <div id="text_container" style="display: inline;">
+                    <!-- Every tble that can appear when click on the buttons-->
+                    <table id="weights1_table" class="table" style="display: none; width: 0px;">
+                        <tr>
+                            <td>Hola!
+                        </td>
+                            <td>Hola!
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Adéu!
+                        </td>
+                            <td>Adéu!
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="run"></div>
+            </div>
+            <!-- Conté la taula amb tots els botons-->
+            <div id="buttons">
+                <table cellspacing="15px">
+                    <!-- Títol de la taula-->
+                    <thead>
+                        <tr class="table_header">
+                            <th>Weights</th>
+                            <th>Result</th>
+                            <th>Error</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button id="weights1" onclick="weights1()">Input - Hidden 1</button>
+                            </td>
+                            <td>
+                                <button id="result1">Input</button>
+                            </td>
+                            <td>
+                                <button id="error1">Hidden 2 - Output</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="weights2">Input - Hidden 1</button>
+                            </td>
+                            <td>
+                                <button id="result2">Hidden 1</button>
+                            </td>
+                            <td>
+                                <button id="error2">Hidden 2 - Output</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="weights3">IHidden 2 - Output</button>
+                            </td>
+                            <td>
+                                <button id="result3">HHidden 2</button>
+                            </td>
+                            <td>
+                                <button id="error3">Hidden 2 - Output</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id="result4">Output</button>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id="clear" onclick="clearText()">Clear text</button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <!-- Primera fila-->
+                    
+                </table>
+            </div>
+        </center>
+    </body>
+</html>
