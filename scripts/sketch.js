@@ -1,14 +1,3 @@
-/************************************************************************************************************************************
- Sketch.js
- Les funcions d'aquest programa són:
-  1. Generar un color random per passar-lo a la xarxa neuronal
-  2. Donar el color a la xarxa neuronal
-  3. Rebre una resposta de la xarxa neuronal
-  4. Preguntar la resposta:
-    Era el color clar o fosc? --> I obtenir una resposta de la persona
-  5. Agafar la resposta de la persona, el valor del color i entrenar la xarxa neuronal artificial
-*/
-
 let input = []
 let answer = []
 let father = []
@@ -30,7 +19,8 @@ function setup() {
   canvas.parent(father[0])
 
   father[1] = document.getElementById('run')
-  confrim = createButton('train').attribute('onclick', 'train()').parent(father[1])
+  trainBut = createButton('train').attribute('onclick', 'train()').parent(father[1])
+  reunBut = createButton('run').attribute('onclick','run()').parent(father[1])
   //2
   getColor()
 
@@ -105,15 +95,26 @@ function train() {
 }
 
 function run() {
+    input = []
+  input.push(r, g, b)
+  //console.log("Inputs array: ");
+  //console.table(input);
 
-  /* Què ha de fer aquesta funció?
-    1. Ha de preguntar a la persona si el color era clar o fosc
-    2. S'ha de posar el valor del resultat esperat en un array per entrenar la xarxa neuronal artificial
-    3. Amb la resposta de la xarxa neuronal i la resposta real s'ha d'entrenar la xarxa neuronal
-    4. Quan la xarxa ja hagui entrenat, generar un nou color com a fons
-  */
+  //2.
+  answer = nn.feedforward(input);
 
-  
+  //3.
+  perc1 = (answer[0] * 100).toFixed(2)
+  perc2 = (answer[1] * 100).toFixed(2)
+
+  //4.
+  if(perc1 >= 50) {
+    console.log(`Això és un color clar, ${perc1}% segur`)
+  } else {
+    console.log(`Això és un color fosc, ${perc2}% segur`)
+  }
+
+  getColor()
 }
 
 function getColor() {
