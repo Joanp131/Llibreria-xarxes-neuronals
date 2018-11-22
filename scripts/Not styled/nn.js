@@ -26,12 +26,15 @@ function dsigmoid(y) {
 };
 
 function crossEntropy(yhat, y) {
-   let result = new Matrix(2, 1);
-   for (let i = 0; i < result.rows; i++) {
-     result.data[i][0] = -(y.data[i][0]*Math.log10(yhat.data[i]) + (1 - y.data[i]) * Math.log10(1 - yhat.data[i]));
-   };
-   return result;
-  
+  if (yhat instanceof Matrix && y instanceof Matrix && yhat.rows === 2 && y.rows === 2) {
+    let result = new Matrix(2, 1);
+    for (let i = 0; i < result.rows; i++) {
+      result.data[i][0] = -(y.data[i][0]*Math.log10(yhat[i]) + (1 - y.data[i]) * Math.log10(1 - yhat[i]));
+    return result;
+    };
+  } else {
+    console.log("Something went wrong...");
+  } 
 };
 
 class NeuralNetwork {
@@ -43,8 +46,11 @@ class NeuralNetwork {
     this.output_nodes = output_nodes;
 
     this.ih1_weights = new Matrix(this.hidden_nodes1, this.inputs);
+    /*this.ih1_weights.randomize()*/
     this.h1h2_weights = new Matrix(this.hidden_nodes2, this.hidden_nodes1);
+    /*this.h1h2_weights.randomize()*/
     this.h2o_weights = new Matrix(this.output_nodes, this.hidden_nodes2);
+    /*this.h2o_weights.randomize()*/
   };
 
   feedforward(input_values) {
@@ -108,9 +114,9 @@ class NeuralNetwork {
     gradients.multiply(learning_rate);
 
     let hidden2_T = Matrix.transpose(this.hidden2_ans);
-    this.weights_h2o_deltas = Matrix.multiply(gradients, hidden2_T);
+    let weights_h2o_deltas = Matrix.multiply(gradients, hidden2_T);
 
-    this.h2o_weights.add(this.weights_h2o_deltas);
+    this.h2o_weights.add(weights_h2o_deltas);
 
     saveWeights();
   };

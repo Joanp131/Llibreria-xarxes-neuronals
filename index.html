@@ -28,23 +28,6 @@
             <!-- Conté el canvas de la xarxa neuronal, el botó per fer-la funcionar i les taules que poden aparèixer-->
             <div id="nn_container">
                 <div id="canvas" style="display: inline-block;"></div>
-                <div id="text_container" style="display: inline-block; height: 200px">
-                    <!-- Every tble that can appear when click on the buttons-->
-                    <table id="weights1_table" class="table" style="display: none; width: 0px;">
-                        <tr>
-                            <td>Hola!
-                        </td>
-                            <td>Hola!
-                        </td>
-                        </tr>
-                        <tr>
-                            <td>Adéu!
-                        </td>
-                            <td>Adéu!
-                        </td>
-                        </tr>
-                    </table>
-                </div>
                 <div id="run"></div>
             </div>
             <!-- Conté la taula amb tots els botons-->
@@ -103,7 +86,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <button id="clear" onclick="clearText()">Clear text</button>
+                                <button id="clear" onclick="console.clear()">Clear text</button>
                             </td>
                             <td></td>
                         </tr>
