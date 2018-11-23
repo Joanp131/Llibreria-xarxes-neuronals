@@ -27,9 +27,8 @@
         <center>
             <!-- Conté el canvas de la xarxa neuronal i els botons per fer-la funcionar-->
             <div id="nn_container">
-                <div id="canvas" style="display: inline-block;"></div>
-                <div id="answer" style="display: inline-block;">
-                    <b>Resposta:</b>
+                <div>
+                    <div id="canvas" style="display: inline-block;"></div>
                 </div>
                 <div id="run"></div>
             </div>
@@ -59,6 +58,71 @@
                     <b>Run: </b><p>Aquesta opció fa funcionar la xarxa neuronal en l'estat en el que està. Al clicar al botó, la xarxa neuronal mira quin color hi ha al requadre i et diu si és clar o fosc. Si funciona malament (encerta poques vegades), és degut a que encara està entrenant-se.</p>
                     <b>Train: </b><p>Aquesta funció entrena la xarxa neuronal. Al clicar el botó, intentarà endevinar si el color que hi ha dins del requadre és clar o és fosc. Aleshores, us preguntarà mitjançant un cartell quina és la resposta correcta. Si estava equivocada, es corregirà per fer-ho millor en el futur.</p>
                 </div>
+
+                <button id="coll1but" class="collapsible">Debugger</button>
+                <div id="collapse1" class="content">
+                    <div id="buttons">
+                        <table cellspacing="15px">
+                            <thead>
+                                <tr class="table_header">
+                                    <th>Weights</th>
+                                    <th>Result</th>
+                                    <th>Error</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button id="weights1" onclick="weights1()">Input - Hidden 1</button>
+                                    </td>
+                                    <td>
+                                        <button id="result1" onclick="result1()">Input</button>
+                                    </td>
+                                    <td>
+                                        <button id="error1">Hidden 2 - Output</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="weights2" onclick="weights2()">Hidden 1 - Hidden 2</button>
+                                    </td>
+                                    <td>
+                                        <button id="result2" onclick="result2()">Hidden 1</button>
+                                    </td>
+                                    <td>
+                                        <button id="error2">Hidden 2 - Output</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="weights3" onclick="weights3()">Hidden 2 - Output</button>
+                                    </td>
+                                    <td>
+                                        <button id="result3" onclick="result3()">HHidden 2</button>
+                                    </td>
+                                    <td>
+                                        <button id="error3" onclick="error3()">Output</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button id="result4" onclick="result4()">Output</button>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button id="clear" onclick="console.clear()">Clear text</button>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <!--Script per obrir les "caixes" amb informació-->
@@ -78,6 +142,7 @@
                   });
                 }
             </script>
+
             <!-- Per si mai ho vull, tinc el codi dels botons aquí--><!--
             <div id="buttons">
                 <table cellspacing="15px">

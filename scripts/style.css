@@ -1,12 +1,31 @@
 html, body {
-	margin: 5px;
+	/*margin: 5px;*/
 	font-size: 15pt;
+	height: 100%
 }
 button {
 	cursor: pointer;
 	width: 100%;
 	height: 100%;
 	border-radius: 0px;
+}
+table {
+	/*margin: 5px;*/
+}
+ tr, th, td {
+	padding: 5px;
+	/*border-spacing: 0px;
+	margin: 20px;*/
+	width: 150px;
+	height: 30px;
+	align-content: center;
+}
+th {
+	background-color: rgba(0, 0, 0, 0.2);
+	border: 1px solid black;
+}
+td {
+	padding: 1px;
 }
 .main {
 	height: 35px;
@@ -45,6 +64,9 @@ button {
 
 .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+#nn_container {
+	margin: 10px;
 }
 #run {
 	width: 200px;
