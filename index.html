@@ -25,15 +25,62 @@
     <body>
         <!-- Vull que tot el document estigui centrat-->
         <center>
-            <!-- Conté el canvas de la xarxa neuronal, el botó per fer-la funcionar i les taules que poden aparèixer-->
+            <!-- Conté el canvas de la xarxa neuronal i els botons per fer-la funcionar-->
             <div id="nn_container">
                 <div id="canvas" style="display: inline-block;"></div>
+                <div id="answer" style="display: inline-block;">
+                    <b>Resposta:</b>
+                </div>
                 <div id="run"></div>
             </div>
-            <!-- Conté la taula amb tots els botons-->
+
+            <div id="collapsibles">
+                <!-- Totes les "caixes" d'informació-->
+                <button id="coll1but" class="collapsible">Xarxes neuronals artificials</button>
+                <div id="collapse1" class="content">
+                    <p>
+                        Les Xarxes neuronals artificials...
+                    </p>
+                </div>
+
+                <button id="coll1but" class="collapsible">Aquesta xarxa neuronal</button>
+                <div id="collapse1" class="content">
+                    <p>
+                        Les Xarxes neuronals artificials...
+                    </p>
+                    <img src="/sources/nn.svg" id="neuralImg">
+                </div>
+
+                <button id="coll1but" class="collapsible">Funcionament d'aquesta xarxa neuronal</button>
+                <div id="collapse1" class="content">
+                    <p>
+                        Podeu fer funcionar aquesta xarxa neuronal de dues maneres diferents:
+                    </p>
+                    <b>Run: </b><p>Aquesta opció fa funcionar la xarxa neuronal en l'estat en el que està. Al clicar al botó, la xarxa neuronal mira quin color hi ha al requadre i et diu si és clar o fosc. Si funciona malament (encerta poques vegades), és degut a que encara està entrenant-se.</p>
+                    <b>Train: </b><p>Aquesta funció entrena la xarxa neuronal. Al clicar el botó, intentarà endevinar si el color que hi ha dins del requadre és clar o és fosc. Aleshores, us preguntarà mitjançant un cartell quina és la resposta correcta. Si estava equivocada, es corregirà per fer-ho millor en el futur.</p>
+                </div>
+            </div>
+
+            <!--Script per obrir les "caixes" amb informació-->
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                  coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                      content.style.maxHeight = null;
+                    } else {
+                      content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                  });
+                }
+            </script>
+            <!-- Per si mai ho vull, tinc el codi dels botons aquí--><!--
             <div id="buttons">
                 <table cellspacing="15px">
-                    <!-- Títol de la taula-->
                     <thead>
                         <tr class="table_header">
                             <th>Weights</th>
@@ -91,10 +138,9 @@
                             <td></td>
                         </tr>
                     </tbody>
-                    <!-- Primera fila-->
-                    
                 </table>
-            </div>
+            </div>-->
+
         </center>
     </body>
 </html>

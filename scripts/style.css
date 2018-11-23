@@ -2,34 +2,53 @@ html, body {
 	margin: 5px;
 	font-size: 15pt;
 }
-
-table {
-	/*margin: 5px;*/
-}
-
-tr, th, td {
-	padding: 5px;
-	/*border-spacing: 0px;
-	margin: 20px;*/
-	width: 150px;
-	height: 30px;
-	align-content: center;
-}
-th {
-	background-color: rgba(0, 0, 0, 0.2);
-	border: 1px solid black;
-}
-td {
-	padding: 1px;
-}
 button {
 	cursor: pointer;
 	width: 100%;
 	height: 100%;
 	border-radius: 0px;
 }
+.main {
+	height: 35px;
+	margin-top: 5px;
+}
+.collapsible {
+	width: 100%;
+	background-color: #eee;
+  	color: #444;
+  	cursor: pointer;
+  	padding: 18px;
+  	border: none;
+  	text-align: left;
+  	outline: none;
+  	font-size: 15px;
+  	margin: 5px;
+}
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+.content {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    text-align: left;
+    transition: max-height 0.3s ease-out;
+}
+.collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
 #run {
 	width: 200px;
+	margin-bottom: 10px;
 }
 #buttons {
 	margin-top: 20px;
@@ -42,7 +61,15 @@ button {
 }
 #text_container {
 }
-.main {
-	height: 35px;
-	margin-top: 5px;
+#collapsibles {
+	width: 70%;
+
+}
+#neuralImg {
+	width: 100%;
+	height: 100%;
+}
+#answer {
+	width: 20px,
+	height: 20px;
 }
