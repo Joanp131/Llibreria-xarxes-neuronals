@@ -177,4 +177,7 @@ footer {
 	.sticky + .HeaderContent {
 	  padding-top: 102px;
 	}
+	#collapsibles {
+		width: 90%;
+	}
 }
