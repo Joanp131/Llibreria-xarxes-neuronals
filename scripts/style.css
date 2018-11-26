@@ -70,9 +70,13 @@ td {
 	width: 200px;
 	margin: 5px 5px 5px 10px;
 	display: inline-block;
+	display: table-cell;
 }
 .result, b {
 	display: block;
+}
+.eq {
+	display: table;
 }
 #nn_container {
 	margin: 10px;

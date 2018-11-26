@@ -3,7 +3,7 @@ let answer = []
 let father = []
 let nn;
 let r, g, b
-let espai = document.getElementById('clar')
+
 
 function setup() {
   /*
@@ -46,24 +46,7 @@ function train() {
   */
 
   //1.
-  input = []
-  input.push(r, g, b)
-  console.log("Inputs array: ");
-  console.table(input);
-
-  //2.
-  answer = nn.feedforward(input);
-
-  //3.
-  perc1 = (answer[0] * 100).toFixed(2)
-  perc2 = (answer[1] * 100).toFixed(2)
-
-  //4.
-  if(perc1 >= 50) {
-    console.log(`Això és un color clar, ${perc1}% segur`)
-  } else {
-    console.log(`Això és un color fosc, ${perc2}% segur`)
-  }
+  run()
 
   //1.
   let result
@@ -77,14 +60,18 @@ function train() {
   if(confirm(`És un color ${result}`)) {
     if (result == "clar") {
       realAns = [1, 0]
+      document.getElementById('clar').innerText = "Clar"
     } else {
       realAns = [0, 1]
+      document.getElementById('clar').innerText = "Fosc"
     }
   } else {
     if (result == "clar") {
       realAns = [0, 1]
+      document.getElementById('clar').innerText = "Fosc"
     } else {
       realAns = [1, 0]
+      document.getElementById('clar').innerText = "Clar"
     }
   }
   console.table(realAns);
@@ -97,6 +84,9 @@ function train() {
 }
 
 function run() {
+
+  getColor()
+  
   input = []
   input.push(r, g, b)
   //console.log("Inputs array: ");
@@ -112,15 +102,13 @@ function run() {
   //4.
   if(perc1 >= 50) {
     console.log(`Això és un color clar, ${perc1}% segur`)
-    espai.innerHTML = "clar"
+    document.getElementById('clar').innerText = "Clar"
   } else {
     console.log(`Això és un color fosc, ${perc2}% segur`)
-    espai.innerHTML = "fosc"
+    document.getElementById('clar').innerText = "Fosc"
   }
 
-  espai.innerHTML = ""
-
-  getColor()
+  
 }
 
 function getColor() {
