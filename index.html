@@ -12,7 +12,6 @@
         </style>
         <script src="p5.js/p5.min.js"></script>
         <script src="p5.js/p5.dom.min.js"></script>
-        <script src="p5.js/p5.sound.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
         <script src="scripts/nn.js"></script>
         <script src="scripts/sketch.js"></script>
@@ -27,10 +26,17 @@
         <center>
             <!-- Conté el canvas de la xarxa neuronal i els botons per fer-la funcionar-->
             <div id="nn_container">
+                <div id="canvas" style="display: inline-block;"></div>
                 <div>
-                    <div id="canvas" style="display: inline-block;"></div>
+                    <span id="result">
+                        <div id="run" class="half"></div>
+                        <div id="answer" class="half">
+                            <b>Result:</b>
+                            <span id="clar" class="reult"></span>
+                        </div>
+                    </span>
                 </div>
-                <div id="run"></div>
+                
             </div>
 
             <div id="collapsibles">
@@ -47,7 +53,7 @@
                     <p>
                         Les Xarxes neuronals artificials...
                     </p>
-                    <img src="https://lh3.googleusercontent.com/xrqfXk4vr4q5BX6geNY-Q-qDwB0axmazuIVMwGE9nfjXUFges6eqOjeN9Bsos5mdCYZ0zZEswlPnHKu7-m84nv_C-_SIZSZqw55AIyOFHQRZ4pOyN8ANExgXnR8vHaZcp1jvQrsUyEhb6z6l4VYt_tb2oOUtVn5ipGugzQfHKsGvP_m8bEVhP9NnQLMi11rdaeI3PJydubmEtDAiWCJcQf8C6WV-XLjpey3MXW4C7XqTx1CnoOX8ExXXLMxpmCCZNpxasuvbYC1y97VaxIVXVnSOt8qS2fxhhKhmapAnzqxfWJqUOEgJWsRgPoIaGG8-bVND4BXTbcfmwswIBe0bOVOu03EtPb8ldYkzq7u2b4wxgB1nCJCrXp3afiOwQPW20Ug0Kal0l4CrLjbCsxL6q-aMPclHvAobwD7FL7nH6Bchi5dgZ3Jb4aKGMpwj98-U58cmTBBj6PNgU4U8iFpd-i0-ByzwNmKalkVFtnInnM33BRbTqlcQoIZukDtf29r5aUb12v6cFRPweTuuaq-0bpgLlWhyomdI9oHJNZbfwIX7z_HCqMBZBFz6a8KRUJsjXwlD5Fhzg5bCpJ7T4XL096onoyF4DZPK_CnJhXSTzuYidyVVz8FkMeXCJegYFEN-ANAa20cGXNyu9UdD0NxCTL1I=w793-h364-no" id="neuralImg" style="width: 100%; height: 100%;" alt="Neural network structure image">
+                    <img href="sources/nn.svg" id="neuralImg" style="width: 100%; height: 100%;" alt="Neural network structure image">
                 </div>
 
                 <button id="coll3but" class="collapsible">Funcionament d'aquesta xarxa neuronal</button>

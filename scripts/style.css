@@ -66,18 +66,22 @@ td {
 .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+.half {
+	width: 200px;
+	margin: 5px 5px 5px 10px;
+	display: inline-block;
+}
+.result, b {
+	display: block;
+}
 #nn_container {
 	margin: 10px;
-}
-#run {
-	width: 200px;
-	margin-bottom: 10px;
 }
 #buttons {
 	margin-top: 20px;
 }
 #canvas {
-	width: 200px;
+	width: 415px;
 	height: 200px;
 	/*margin-bottom: 0px;*/
 	padding: 0px;

@@ -1,4 +1,4 @@
-let tables = [
+/*let tables = [
 	"weights1_table"
 ]
 
@@ -66,4 +66,4 @@ function clearText () {
 	for(let i = 0; i < tables.length; i++) {
 		document.getElementById(tables[i]).style.display = "none";
 	}
-}
+}*/

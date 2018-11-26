@@ -3,6 +3,7 @@ let answer = []
 let father = []
 let nn;
 let r, g, b
+let espai = document.getElementById('clar')
 
 function setup() {
   /*
@@ -15,7 +16,7 @@ function setup() {
 
   //1
   father[0] = document.getElementById('canvas')
-  canvas = createCanvas(200, 200).attribute('id', 'color')
+  canvas = createCanvas(415, 200).attribute('id', 'color')
   canvas.parent(father[0])
 
   father[1] = document.getElementById('run')
@@ -96,7 +97,7 @@ function train() {
 }
 
 function run() {
-    input = []
+  input = []
   input.push(r, g, b)
   //console.log("Inputs array: ");
   //console.table(input);
@@ -111,9 +112,13 @@ function run() {
   //4.
   if(perc1 >= 50) {
     console.log(`Això és un color clar, ${perc1}% segur`)
+    espai.innerHTML = "clar"
   } else {
     console.log(`Això és un color fosc, ${perc2}% segur`)
+    espai.innerHTML = "fosc"
   }
+
+  espai.innerHTML = ""
 
   getColor()
 }
