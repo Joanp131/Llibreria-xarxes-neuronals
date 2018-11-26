@@ -1,7 +1,7 @@
 html, body {
 	/*margin: 5px;*/
 	font-size: 15pt;
-	height: 100%
+	height: 100%;
 }
 button {
 	cursor: pointer;
@@ -26,6 +26,24 @@ th {
 }
 td {
 	padding: 1px;
+}
+header {
+	width: 100%;
+	height: 60px;
+	background-color: black;
+	color: white;
+	transition: background-color 0.4s;
+}
+h1 {
+	margin: 0px;
+}
+.sticky {
+	position: fixed;
+ 	top: 0;
+  	width: 100%;
+  	background-color: rgba(0, 0, 0, 0.25);
+  	transition: background-color 0.4s;
+  	color: black;
 }
 .main {
 	height: 35px;
@@ -77,6 +95,31 @@ td {
 }
 .eq {
 	display: table;
+}
+.HeaderContent {
+	padding: 16px;
+}
+.sticky + .HeaderContent {
+  padding-top: 200px;
+}
+.full {
+	height: 100%;
+	width: auto;
+}
+#icon {
+	height: 100%;
+	width: auto;
+}
+#HeaderIcon {
+	height: 100%;
+	width: auto;
+	display: inline-block;
+	margin: 0px 5px 0px 5px;
+}
+#title {
+	display: inline-block;
+	margin: 5px;
+	position: absolute;
 }
 #nn_container {
 	margin: 10px;
