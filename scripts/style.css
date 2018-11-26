@@ -38,6 +38,10 @@ header {
 h2 {
 	margin: 0px;
 }
+footer {
+	width: 100%;
+	height: 20px;
+}
 .sticky {
 	position: fixed;
  	top: 0;
@@ -158,8 +162,19 @@ h2 {
 	}
 	.half {
 		width: 100%;
-		margin: 5px 5px 5px 10px;
+		margin: 10px 0px;
 		display: block;
 		margin-bottom: 10px;
+	}
+	.HeaderContent {
+	  padding: 16px;
+	}
+	.sticky {
+	  position: fixed;
+	  top: 0;
+	  width: 100%
+	}
+	.sticky + .HeaderContent {
+	  padding-top: 102px;
 	}
 }
