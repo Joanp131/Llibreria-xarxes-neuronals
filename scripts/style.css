@@ -3,6 +3,7 @@ html, body {
 	font-size: 15pt;
 	height: 100%;
 	width: 100%;
+	font-family: Verdana;
 }
 button {
 	cursor: pointer;
@@ -44,9 +45,6 @@ footer {
 	height: 20px;
 }
 .sticky {
-	position: fixed;
- 	top: 0;
-  	width: 100%;
   	background-color: rgba(0, 0, 0, 0.25);
   	transition: background-color 0.4s;
   	color: black;
@@ -102,16 +100,18 @@ footer {
 .eq {
 	display: table;
 }
-.HeaderContent {
-	padding: 16px;
-	margin: 0px
-}
-.sticky + .HeaderContent {
-  padding-top: 200px;
-}
 .full {
 	/*height: 100%;*/
 	width: auto;
+}
+.HeaderContent {
+	margin-top: 80px;
+}
+#header {
+	position: fixed;
+ 	top: 0;
+  	width: 100%;
+  	margin-bottom: 5px;
 }
 #icon {
 	height: 100%;
@@ -126,7 +126,7 @@ footer {
 #title {
 	display: inline-block;
 	margin: 5px;
-	margin: 13px;
+	margin: 11px;
 	position: absolute;
 }
 #nn_container {
@@ -140,8 +140,6 @@ footer {
 	height: 200px;
 	/*margin-bottom: 0px;*/
 	padding: 0px;
-}
-#text_container {
 }
 #collapsibles {
 	width: 70%;
@@ -175,8 +173,8 @@ footer {
 	  top: 0;
 	  width: 100%
 	}
-	.sticky + .HeaderContent {
-	  padding-top: 102px;
+	.HeaderContent {
+		margin-top: 50px;
 	}
 	#collapsibles {
 		width: 90%;
