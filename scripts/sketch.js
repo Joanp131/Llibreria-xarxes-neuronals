@@ -3,6 +3,8 @@ let answer = []
 let father = []
 let nn;
 let r, g, b
+let first
+let color = true
 
 
 function setup() {
@@ -13,7 +15,6 @@ function setup() {
       3. Iniciar un objecte "Xarxa neuronal"
       4. Crear botons per fer funcionar la xarxa
   */
-
   //1
   father[0] = document.getElementById('canvas')
   canvas = createCanvas(415, 200).attribute('id', 'color')
@@ -85,8 +86,6 @@ function train() {
 
 function run() {
 
-  getColor()
-  
   input = []
   input.push(r, g, b)
   //console.log("Inputs array: ");
@@ -107,8 +106,11 @@ function run() {
     console.log(`Això és un color fosc, ${perc2}% segur`)
     document.getElementById('clar').innerText = "Fosc"
   }
-
-  
+  if (color) {
+    getColor()
+  } else {
+    color = true
+  }
 }
 
 function getColor() {
@@ -129,6 +131,9 @@ function getColor() {
     console.log(`red: ${r}, green: ${g}, blue: ${b}`)
   } else {
     background(r, g, b)
+    document.getElementById('range_red').value = r
+    document.getElementById('range_green').value = g
+    document.getElementById('range_blue').value = b
   }
 }
 
@@ -141,4 +146,13 @@ function createButtons() {
 function displayW(a) {
   a.print()
   //console.log(a.data)
+}
+
+function refresh() {
+  r = document.getElementById('range_red').value
+  g = document.getElementById('range_green').value
+  b = document.getElementById('range_blue').value
+  background(r, g, b)
+  color = false
+  run()
 }

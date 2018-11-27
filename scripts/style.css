@@ -44,6 +44,46 @@ footer {
 	width: 100%;
 	height: 20px;
 }
+.text {
+	margin: 0px;
+}
+.warning {
+	background-color: #ffffcc;
+    border-left: 6px solid #ffeb3b;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+    margin: 10px;
+    text-align: left;
+    font-size: 12pt;
+}
+.colorRange {
+	width: 90%;
+	-webkit-appearance: none;
+	appearance: none;
+	height: 25px;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: .2s;
+	margin: 5px 0px;
+}
+.colorRange:hover {
+	opacity: 1;
+}
+.colorRange::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #1f1f1f; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+.colorRange::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	background-color: black;
+}
 .sticky {
   	background-color: rgba(0, 0, 0, 0.25);
   	transition: background-color 1s;
@@ -108,6 +148,26 @@ footer {
 .HeaderContent {
 	margin-top: 80px;
 }
+#Warning1 {
+	width: 70%;
+}
+#range_red {
+	background-color: rgba(255, 0, 0, 0.75);
+}
+#range_green {
+	background-color: rgba(0, 255, 0, 0.75);
+}
+#range_blue {
+	background-color: rgba(0, 0, 255, 0.75);
+}
+#color {
+	transition: background-color 0.5s;
+}
+#lastColor {
+	width: 70%;
+	height: 150%;
+	transition: background-color 0.5s;
+}
 #header {
 	position: fixed;
  	top: 0;
@@ -141,6 +201,7 @@ footer {
 	height: 200px;
 	/*margin-bottom: 0px;*/
 	padding: 0px;
+
 }
 #collapsibles {
 	width: 70%;
