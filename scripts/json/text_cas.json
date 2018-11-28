@@ -1,0 +1,9 @@
+{
+	"titleText":"Red neuronal",
+	"llenguatge":"Lenguaje",
+	"runBut":"Prueba",
+	"trainBut":"Entrena",
+	"resultText":"Resultado:",
+	"atention":"Atención!",
+	"warn":"La red neuronal no está treminada y, aunque sempre da un resultado, este puede no ser correcto. En caso que lo fuera, seria casualidad. Pronto estará terminada"
+}

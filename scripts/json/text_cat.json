@@ -1,5 +1,6 @@
 {
-	"titleText":"This is a test!",
+	"titleText":"Xarxa neuronal",
+	"llenguatge":"Llenguatge",
 	"runBut":"Endevina",
 	"trainBut":"Entrena",
 	"resultText":"Resultat:",

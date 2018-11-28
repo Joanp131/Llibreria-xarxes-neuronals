@@ -1,29 +1,35 @@
-let catala_text = JSON.parse('{"titleText":"Xarxes neuronals","llenguatge":"Llenguatge", "runBut":"Endevina", "trainBut":"Entrena", "resultText":"Resultat:", "atention":"Atenció!", "warn":"La xarxa neuronal no està acabada, i tot i que sempre retorna un resultat, aquest pot no ser correcte. En cas que ho fos, seria casualitat. Estarà acabada en breus"}');
-let castella_text = JSON.parse('{"titleText":"Red neuronal","llenguatge":"Lenguaje", "runBut":"Acierta", "trainBut":"Entrena", "resultText":"Resultado:", "atention":"Atención!", "warn":"La red neuronal no está terminada y, aún que siempre da un resultado, este puede no ser correcto. En caso que lo fuera, seria casualidad. Estará terminada en breves"}');
-let angles_text = JSON.parse('{"titleText":"Neural network","llenguatge":"Language", "runBut":"Run", "trainBut":"Train", "resultText":"Result:", "atention":"Warning!", "warn":"This neural network is not finished. However, it will always return a result. It may not be correct, and if it is, is by coincidence. The neural network is going to be finished soon."}');
 
-window.onload = function() {catala()};
 
 function catala() {
-	document.getElementById("titleText").innerHTML = catala_text["titleText"]
-	document.getElementById("llenguatge").innerHTML = catala_text["llenguatge"]
-	document.getElementById("runBut").innerHTML = catala_text["runBut"]
-	document.getElementById("trainBut").innerHTML = catala_text["trainBut"]
-	document.getElementById("resultText").innerHTML = catala_text["resultText"]
-	document.getElementById("atention").innerHTML = catala_text["atention"]
-	document.getElementById("runBut").innerHTML = catala_text["runBut"]
-	document.getElementById("warn").innerHTML = catala_text["warn"]
+
+	$.getJSON("scripts/json/text_cat.json", function(cat) {
+	    console.log(cat); // this will show the info it in firebug console
+	    document.getElementById("titleText").innerHTML = cat["titleText"]
+		document.getElementById("llenguatge").innerHTML = cat["llenguatge"]
+		document.getElementById("runBut").innerHTML = cat["runBut"]
+		document.getElementById("trainBut").innerHTML = cat["trainBut"]
+		document.getElementById("resultText").innerHTML = cat["resultText"]
+		document.getElementById("atention").innerHTML = cat["atention"]
+		document.getElementById("runBut").innerHTML = cat["runBut"]
+		document.getElementById("warn").innerHTML = cat["warn"]
+	});
+	
 }
 
 function castella() {
-	document.getElementById("titleText").innerHTML = castella_text["titleText"]
-	document.getElementById("llenguatge").innerHTML = castella_text["llenguatge"]
-	document.getElementById("runBut").innerHTML = castella_text["runBut"]
-	document.getElementById("trainBut").innerHTML = castella_text["trainBut"]
-	document.getElementById("resultText").innerHTML = castella_text["resultText"]
-	document.getElementById("atention").innerHTML = castella_text["atention"]
-	document.getElementById("runBut").innerHTML = castella_text["runBut"]
-	document.getElementById("warn").innerHTML = castella_text["warn"]
+	
+	$.getJSON("scripts/json/text_cas.json", function(cas) {
+	    console.log(cas); // this will show the info it in firebug console
+	    document.getElementById("titleText").innerHTML = cas["titleText"]
+		document.getElementById("llenguatge").innerHTML = cas["llenguatge"]
+		document.getElementById("runBut").innerHTML = cas["runBut"]
+		document.getElementById("trainBut").innerHTML = cas["trainBut"]
+		document.getElementById("resultText").innerHTML = cas["resultText"]
+		document.getElementById("atention").innerHTML = cas["atention"]
+		document.getElementById("runBut").innerHTML = cas["runBut"]
+		document.getElementById("warn").innerHTML = cas["warn"]
+	});
+
 }
 
 function angles() {

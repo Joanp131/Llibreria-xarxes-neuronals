@@ -13,6 +13,8 @@ window.onload = function() {
   let ref = database.ref('weights');
 
   ref.on('value', gotData, errData)
+
+  catala()
 };
 
 function saveWeights() {
