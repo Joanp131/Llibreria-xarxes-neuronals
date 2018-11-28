@@ -21,8 +21,8 @@ function setup() {
   canvas.parent(father[0])
 
   father[1] = document.getElementById('run')
-  runBut = createButton('Run').attribute('onclick','run()').attribute('class','main').parent(father[1])
-  trainBut = createButton('Train').attribute('onclick', 'train()').attribute('class','main').parent(father[1])
+  runBut = createButton('Run').attribute('onclick','run()').attribute('id','runBut').attribute('class','main').parent(father[1])
+  trainBut = createButton('Train').attribute('onclick', 'train()').attribute('id','trainBut').attribute('class','main').parent(father[1])
   
   //2
   getColor()

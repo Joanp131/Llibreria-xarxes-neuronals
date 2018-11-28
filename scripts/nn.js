@@ -102,8 +102,11 @@ class NeuralNetwork {
 
     //5.
     let gradients = Matrix.map(this.guess, dsigmoid);
+    gradients.print()
 
-    gradients.multiply(this.outErr);
+    let out_Err_t = Matrix.transpose(this.outErr)
+    gradients.multiply(out_Err_t);
+    gradients.print()
 
     gradients.multiply(learning_rate);
 

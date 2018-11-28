@@ -13,11 +13,13 @@
         <script src="p5.js/p5.min.js"></script>
         <script src="p5.js/p5.dom.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script src="scripts/jquery.js"></script>
         <script src="scripts/nn.js"></script>
         <script src="scripts/sketch.js"></script>
         <script src="scripts/Matrix.js"></script>
         <script src="scripts/firebase.js"></script>
         <script src="scripts/text.js"></script>
+        <script src="scripts/setText.js"></script>
         <link rel="stylesheet" type="text/css" href="scripts/style.css">
         <link rel="icon" href="sources/icon.png">
     </head>
@@ -28,7 +30,17 @@
                 <img id="icon" src="sources/icon.png">
             </div>
             <div id="title" class="full eq">
-                <h2>Xarxa Neuronal</h2>
+                <h2 id="titleText"></h2>
+            </div>
+            <div id="language" class="dropdown">
+                <button class="dropbtn">
+                    <i id="llenguatge" class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <div id="catala-lang" class="select-lang" onclick="catala()">Català</div>
+                    <div id="castella-lang" class="select-lang" onclick="castella()">Español</div>
+                    <div id="ang-lang" class="select-lang" onclick="angles()">English</div>
+                </div>
             </div>
             
         </header>
@@ -56,7 +68,7 @@
                         <div id="run" class="half"></div>
                         <div id="answer" class="half">
                             <div id="lastColor">
-                                <b>Result:</b>
+                                <b id="resultText">Result:</b>
                                 <span id="clar" class="reult"></span>
                             </div>
                         </div>
@@ -67,7 +79,7 @@
 
             <div id="info">
                 <div id="Warning1" class="warning">
-                    <p class="text"><strong>Atenció!</strong> La xarxa neuronal no està acabada, i tot i que sempre retorna un resultat, aquest pot no ser correcte. En cas que ho fos, seria casualitat. D'aquí poc estarà acabada</p>
+                    <strong id="atention">Atenció!</strong> <p class="text" id="warn">La xarxa neuronal no està acabada, i tot i que sempre retorna un resultat, aquest pot no ser correcte. En cas que ho fos, seria casualitat. D'aquí poc estarà acabada</p>
                 </div>
             </div>
 
