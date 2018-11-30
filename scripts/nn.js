@@ -87,11 +87,12 @@ class NeuralNetwork {
     this.realAns = Matrix.fromArray(realAns);
 
     /*Calculate the error of every layer*/
-    this.outErr = crossEntropy(this.guess, this.realAns);
+    //this.outErr = crossEntropy(this.guess, this.realAns);
 
     this.h2o_weights_t = Matrix.transpose(this.h2o_weights)
     this.h1h2_weights_t = Matrix.transpose(this.h1h2_weights)
     this.ih1_weights_t = Matrix.transpose(this.ih1_weights)
+    this.outErr = Matrix.subtract(this.realAns, this.guess);
     this.err_h2 = Matrix.multiply(this.h2o_weights_t, this.outErr);
     this.err_h1 = Matrix.multiply(this.h1h2_weights_t, this.err_h2);
     this.err_int = Matrix.multiply(this.ih1_weights_t, this.err_h1);
