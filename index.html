@@ -33,16 +33,16 @@
                 <h2 id="titleText"></h2>
             </div>
             <div id="language" class="dropdown">
-                <button class="dropbtn">
+                <button class="dropbtn" style="display: none">
                     <i id="llenguatge" class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content">
+                <div class="dropdown-content" style="display: none">
                     <div id="catala-lang" class="select-lang" onclick="catala()">Català</div>
                     <div id="castella-lang" class="select-lang" onclick="castella()">Español</div>
                     <div id="ang-lang" class="select-lang" onclick="angles()">English</div>
                 </div>
             </div>
-            
+
         </header>
         <script type="text/javascript">
             window.onscroll = function() {myFunction()};
@@ -74,15 +74,15 @@
                         </div>
                     </span>
                 </div>
-                
-            </div>
 
+            </div>
+            <!--
             <div id="info">
                 <div id="Warning1" class="warning">
                     <strong id="atention"></strong> <p class="text" id="warn"></p>
                 </div>
             </div>
-
+          -->
             <div id="collapsibles">
                 <!-- Totes les "caixes" d'informació-->
                 <button id="coll0but" class="collapsible"></button>
@@ -94,8 +94,8 @@
 
                 <button id="coll1but" class="collapsible">Xarxes neuronals artificials</button>
                 <div id="collapse1" class="content">
-                    <p>
-                        Les Xarxes neuronals artificials...
+                    <p id="text1">
+
                     </p>
                 </div>
 
@@ -116,7 +116,7 @@
                     <b>Train: </b><p>Aquesta funció entrena la xarxa neuronal. Al clicar el botó, intentarà endevinar si el color que hi ha dins del requadre és clar o és fosc. Aleshores, us preguntarà mitjançant un cartell quina és la resposta correcta. Si estava equivocada, es corregirà per fer-ho millor en el futur.</p>
                 </div>
 
-                <!-- Ocupa massa espai--> 
+                <!-- Ocupa massa espai-->
                 <button id="coll4but" class="collapsible">Debugger</button>
                 <div id="collapse4" class="content" style="align-content: center; text-align: center;">
                     <center>
@@ -129,7 +129,7 @@
                                     <th>Error</th>
                                 </tr>
                             </thead>
-                            
+
                             <tbody>
                                 <tr>
                                     <td>
@@ -198,7 +198,7 @@
                       content.style.maxHeight = null;
                     } else {
                       content.style.maxHeight = content.scrollHeight + "px";
-                    } 
+                    }
                   });
                 }
             </script>

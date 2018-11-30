@@ -1,10 +1,15 @@
 {
-	"titleText":"Xarxa neuronal",
+	"titleText":"Xarxa Neuronal",
 	"llenguatge":"Llenguatge",
 	"runBut":"Endevina",
 	"trainBut":"Entrena",
 	"resultText":"Resultat:",
 	"atention":"Atenció!",
 	"warn":"La xarxa neuronal no està acabada, i tot i que sempre retorna un resultat, aquest pot no ser correcte. En cas que ho fos, seria casualitat. D'aquí poc estarà acabada",
-	"coll0but":"Eines de colors"
+	"coll0but":"Eines de colors",
+	"coll1but":"Què és això?",
+	"coll2but":"Aquesta xarxa neuronal",
+	"coll3but":"Funcioament d'aquesta xarxa neuronal",
+	"coll4but":"Debugger",
+	"text1":"Aquesta pàgina web és una xarxa neuronal.\n\rLes Xarxes neuronals són programes que són capaços d'aprendre i cumplir una funció de matera que si s'equivoquen, rectifiquen.\nAquesta xarxa neuronal està programada per dir si el color del requadre és clar o és fosc."
 }

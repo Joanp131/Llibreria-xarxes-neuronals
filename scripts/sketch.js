@@ -21,9 +21,9 @@ function setup() {
   canvas.parent(father[0])
 
   father[1] = document.getElementById('run')
-  runBut = createButton('Run').attribute('onclick','run()').attribute('id','runBut').attribute('class','main').parent(father[1])
-  trainBut = createButton('Train').attribute('onclick', 'train()').attribute('id','trainBut').attribute('class','main').parent(father[1])
-  
+  runBut = createButton('').attribute('onclick','run()').attribute('id','runBut').attribute('class','main').parent(father[1])
+  trainBut = createButton('').attribute('onclick', 'train()').attribute('id','trainBut').attribute('class','main').parent(father[1])
+
   //2
   getColor()
 
@@ -31,7 +31,7 @@ function setup() {
   nn = new NeuralNetwork(3, 2, 4, 2);
 
   //4
-  
+
   //createButtons();
 }
 
