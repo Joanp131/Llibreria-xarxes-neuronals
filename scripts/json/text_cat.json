@@ -11,5 +11,5 @@
 	"coll2but":"Aquesta xarxa neuronal",
 	"coll3but":"Funcioament d'aquesta xarxa neuronal",
 	"coll4but":"Debugger",
-	"text1":"Aquesta pàgina web és una xarxa neuronal.\n\rLes Xarxes neuronals són programes que són capaços d'aprendre i cumplir una funció de matera que si s'equivoquen, rectifiquen.\nAquesta xarxa neuronal està programada per dir si el color del requadre és clar o és fosc."
+	"text1":"Aquesta pàgina web és una xarxa neuronal.<br><br>Les Xarxes neuronals són programes que són capaços d'aprendre i cumplir una funció, de manera que si s'equivoquen, rectifiquen.<br><br>Aquesta xarxa neuronal està programada per dir si el color del requadre és clar o és fosc."
 }
