@@ -58,7 +58,7 @@ function train() {
   }
 
   //2
-  if(confirm(`És un color ${result}`)) {
+  if(confirm(`És un color ${result}?`)) {
     if (result == "clar") {
       realAns = [1, 0]
       document.getElementById('clar').innerText = "Clar"
