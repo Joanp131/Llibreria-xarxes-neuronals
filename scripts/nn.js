@@ -80,7 +80,7 @@ class NeuralNetwork {
   };
 
   backpropagation(ans, realAns) {
-    let learning_rate = 0.1;
+    let learning_rate = 0.01;
 
     /*Get the guess from the feedforward and the real answer from the user and make a matrix for each one*/
     this.guess = Matrix.fromArray(ans);
