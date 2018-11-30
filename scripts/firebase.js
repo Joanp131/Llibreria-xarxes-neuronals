@@ -14,8 +14,12 @@ window.onload = function() {
 
   ref.on('value', gotData, errData)
 
+
+
   catala()
 };
+
+let num;
 
 function saveWeights() {
   console.log("Sending data to firebase...");
@@ -23,11 +27,14 @@ function saveWeights() {
   let weightsDatabase = database.ref('weights');
   let colors = [r, g, b]
 
+  num++
+
   let weights = {
     wih1: nn.ih1_weights.data,
     wh1h2: nn.h1h2_weights.data,
     wh2o: nn.h2o_weights.data,
-    color: colors
+    color: colors,
+    num: num
 }
 
   let send = weightsDatabase.update(weights, finished)
@@ -52,6 +59,7 @@ function gotData(data) {
   nn.ih1_weights.data = weights.wih1
   nn.h1h2_weights.data = weights.wh1h2
   nn.h2o_weights.data = weights.wh2o
+  num = weights.num
 
 }
 
