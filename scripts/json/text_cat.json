@@ -5,5 +5,6 @@
 	"trainBut":"Entrena",
 	"resultText":"Resultat:",
 	"atention":"Atenció!",
-	"warn":"La xarxa neuronal no està acabada, i tot i que sempre retorna un resultat, aquest pot no ser correcte. En cas que ho fos, seria casualitat. D'aquí poc estarà acabada"
+	"warn":"La xarxa neuronal no està acabada, i tot i que sempre retorna un resultat, aquest pot no ser correcte. En cas que ho fos, seria casualitat. D'aquí poc estarà acabada",
+	"coll0but":"Eines de colors"
 }

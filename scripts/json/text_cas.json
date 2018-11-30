@@ -5,5 +5,6 @@
 	"trainBut":"Entrena",
 	"resultText":"Resultado:",
 	"atention":"Atención!",
-	"warn":"La red neuronal no está treminada y, aunque sempre da un resultado, este puede no ser correcto. En caso que lo fuera, seria casualidad. Pronto estará terminada"
+	"warn":"La red neuronal no está treminada y, aunque sempre da un resultado, este puede no ser correcto. En caso que lo fuera, seria casualidad. Pronto estará terminada",
+	"coll0but":"Einas de colores",
 }
