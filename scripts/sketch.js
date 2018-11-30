@@ -47,26 +47,8 @@ function train() {
   */
 
   //1.
-  input = []
-  input.push(r, g, b)
-  //console.log("Inputs array: ");
-  //console.table(input);
+  run()
 
-  //2.
-  answer = nn.feedforward(input);
-
-  //3.
-  perc1 = (answer[0] * 100).toFixed(2)
-  perc2 = (answer[1] * 100).toFixed(2)
-
-  //4.
-  if(perc1 >= 50) {
-    console.log(`Això és un color clar, ${perc1}% segur`)
-    document.getElementById('clar').innerText = "Clar"
-  } else {
-    console.log(`Això és un color fosc, ${perc2}% segur`)
-    document.getElementById('clar').innerText = "Fosc"
-  }
   //1.
   let result
   if (perc1 >= 50) {
@@ -103,8 +85,6 @@ function train() {
 }
 
 function run() {
-  
-  getColor();
 
   input = []
   input.push(r, g, b)
@@ -125,6 +105,11 @@ function run() {
   } else {
     console.log(`Això és un color fosc, ${perc2}% segur`)
     document.getElementById('clar').innerText = "Fosc"
+  }
+  if (color) {
+    getColor()
+  } else {
+    color = true
   }
 }
 
