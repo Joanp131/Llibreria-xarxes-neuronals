@@ -14,9 +14,11 @@ window.onload = function() {
 
   ref.on('value', gotData, errData)
 
-
-
-  catala()
+  try {
+    loadLanguage('cat');
+  } catch(e) {
+    setTimeout(loadLanguage('cat'), 25)
+  }
 };
 
 let num;

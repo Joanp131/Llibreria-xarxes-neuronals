@@ -47,44 +47,54 @@ function train() {
   */
 
   //1.
+  color=true
   run()
 
+  setTimeout(function() {
+    let result
+    if (perc1 >= 50) {
+      result = "clar"
+    } else {
+      result = "fosc"
+    }
+
+    //2
+    if(confirm(`És un color ${result}?`)) {
+      if (result == "clar") {
+        realAns = [1, 0]
+        document.getElementById('clar').innerText = "Clar"
+      } else {
+        realAns = [0, 1]
+        document.getElementById('clar').innerText = "Fosc"
+      }
+    } else {
+      if (result == "clar") {
+        realAns = [0, 1]
+        document.getElementById('clar').innerText = "Fosc"
+      } else {
+        realAns = [1, 0]
+        document.getElementById('clar').innerText = "Clar"
+      }
+    }
+    console.table(realAns);
+
+    //3.
+    nn.backpropagation(answer, realAns)
+
+    //4.
+    getColor()
+  }, 25);
   //1.
-  let result
-  if (perc1 >= 50) {
-    result = "clar"
-  } else {
-    result = "fosc"
-  }
-
-  //2
-  if(confirm(`És un color ${result}?`)) {
-    if (result == "clar") {
-      realAns = [1, 0]
-      document.getElementById('clar').innerText = "Clar"
-    } else {
-      realAns = [0, 1]
-      document.getElementById('clar').innerText = "Fosc"
-    }
-  } else {
-    if (result == "clar") {
-      realAns = [0, 1]
-      document.getElementById('clar').innerText = "Fosc"
-    } else {
-      realAns = [1, 0]
-      document.getElementById('clar').innerText = "Clar"
-    }
-  }
-  console.table(realAns);
-
-  //3.
-  nn.backpropagation(answer, realAns)
-
-  //4.
-  getColor()
+  
 }
 
 function run() {
+
+  if (color) {
+    getColor()
+  } else {
+    color = true
+  }
 
   input = []
   input.push(r, g, b)
@@ -106,11 +116,9 @@ function run() {
     console.log(`Això és un color fosc, ${perc2}% segur`)
     document.getElementById('clar').innerText = "Fosc"
   }
-  if (color) {
-    getColor()
-  } else {
-    color = true
-  }
+
+  console.log(`background r: ${r}, g: ${g}, b:${b}, is ${perc1} clar`)
+  
 }
 
 function getColor() {
