@@ -1,26 +1,29 @@
-window.onload = function() {/* Què fa aquesta funció?
-    1. borra la consola
-    2. Inicia sessió a Firebase i obté les dades
-  */
-
-  //1
-  //console.clear();
-
-  //2
+window.onload = function() {
   var config = {
-      apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
-      authDomain: "weights-b4e62.firebaseapp.com",
-      databaseURL: "https://weights-b4e62.firebaseio.com",
-      projectId: "weights-b4e62",
-      storageBucket: "weights-b4e62.appspot.com",
-      messagingSenderId: "529084520007"
-    };
-    firebase.initializeApp(config);
-    database = firebase.database();
+    apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
+    authDomain: "weights-b4e62.firebaseapp.com",
+    databaseURL: "https://weights-b4e62.firebaseio.com",
+    projectId: "weights-b4e62",
+    storageBucket: "weights-b4e62.appspot.com",
+    messagingSenderId: "529084520007"
+  }
+  firebase.initializeApp(config);
 
-    let ref = database.ref('weights');
-    ref.on('value', gotData, errData)
-}
+  database = firebase.database();
+  let ref = database.ref('weights');
+
+  ref.on('value', gotData, errData)
+
+  try {
+    loadLanguage('cat');
+  } catch(e) {
+    setTimeout(loadLanguage('cat'), 25)
+  }
+
+  refresh();
+};
+
+let num;
 
 function saveWeights() {
   console.log("Sending data to firebase...");
@@ -28,14 +31,17 @@ function saveWeights() {
   let weightsDatabase = database.ref('weights');
   let colors = [r, g, b]
 
+  num++
+
   let weights = {
     wih1: nn.ih1_weights.data,
     wh1h2: nn.h1h2_weights.data,
     wh2o: nn.h2o_weights.data,
-    color: colors
-  }
+    color: colors,
+    num: num
+}
 
-  let send = weightsDatabase.push(weights, finished)
+  let send = weightsDatabase.update(weights, finished)
 }
 
 function finished(err) {
@@ -49,14 +55,15 @@ function finished(err) {
 
 function gotData(data) {
   let weights = data.val()
-  let keys = Object.keys(weights)
+  /*let keys = Object.keys(weights)
   console.log(keys)
   let i = keys.length-1
-  let k = keys[i]
+  let k = keys[i]*/
 
-  nn.ih1_weights.data = weights[k].wih1
-  nn.h1h2_weights.data = weights[k].wh1h2
-  nn.h2o_weights.data = weights[k].wh2o
+  nn.ih1_weights.data = weights.wih1
+  nn.h1h2_weights.data = weights.wh1h2
+  nn.h2o_weights.data = weights.wh2o
+  num = weights.num
 
 }
 

@@ -4,7 +4,5 @@
 	"runBut":"Guess",
 	"trainBut":"Train",
 	"resultText":"Result:",
-	"atention":"Warning!",
-	"warn":"This neural network is not finished. However, it will always return a result. It may not be correct, and if it is, is by coincidence. The neural network is going to be finished soon.",
 	"coll0but":"Color tools"
 }

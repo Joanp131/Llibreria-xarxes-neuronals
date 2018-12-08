@@ -29,63 +29,70 @@ function setup() {
 
   //3
   nn = new NeuralNetwork(3, 2, 4, 2);
-
-  //4
-
-  //createButtons();
 }
 
 function train() {
 
-  /* Que ha de fer aquesta funció?
-    1. Ha d'aafar el valor del color i entrar-lo en un array
-    2. Ha d'enviar l'array a la xarxa neuronal
-    3. Les respostes de la xarxa neuronal, emmagatzemades a "answer" com a array de dos valors s'han de passar a percentatges i
-      arrodonir-los a dues xifres
-    4. S'ha de dir si la xarxa creu que el color és clar o fosc en forma de percentatge
-    5. Ha d'enviar la xarxa neuronal a entrenar
-  */
+  /*No volem que el color canvïi, no fem getColor().*/
 
-  //1.
-  color=true
-  run()
+  /*Passem el color a un array i enviem aquest array a la xarxa neuronal perquè ens torni una resposta*/
+  input = []
+  input.push(r, g, b)
 
-  setTimeout(function() {
-    let result
-    if (perc1 >= 50) {
-      result = "clar"
+  answer = nn.feedforward(input);
+
+  /*Agafem la resposta de la xarxa neuronal i la convertim en percentatges. Depenent de què ens surti, preguntarem a l'usuari si la resposta és correcta*/
+  perc1 = (answer[0] * 100).toFixed(2)
+  perc2 = (answer[1] * 100).toFixed(2)
+
+  /*Depenent de la resposta de l'usuari, creem un array que contingui la resposta correcta: Clar=[1,0]; fosc=[0,1]*/
+  switch (perc1 >= 50) {
+    case true:
+      console.log(`Això és un color clar, ${perc1}% segur`)
+      document.getElementById('clar').innerText = "Clar"
+      break;
+    case false:
+      console.log(`Això és un color fosc, ${perc2}% segur`)
+      document.getElementById('clar').innerText = "Fosc"
+      break;
+  }
+
+  // if(perc1 >= 50) {
+  //   console.log(`Això és un color clar, ${perc1}% segur`)
+  //   document.getElementById('clar').innerText = "Clar"
+  // } else {
+  //   console.log(`Això és un color fosc, ${perc2}% segur`)
+  //   document.getElementById('clar').innerText = "Fosc"
+  // }
+
+  let result
+  if (perc1 >= 50) {
+    result = "clar"
+  } else {
+    result = "fosc"
+  }
+
+  if(confirm(`És un color ${result}?`)) {
+    if (result == "clar") {
+      realAns = [1, 0]
+      document.getElementById('clar').innerText = "Clar"
     } else {
-      result = "fosc"
+      realAns = [0, 1]
+      document.getElementById('clar').innerText = "Fosc"
     }
-
-    //2
-    if(confirm(`És un color ${result}?`)) {
-      if (result == "clar") {
-        realAns = [1, 0]
-        document.getElementById('clar').innerText = "Clar"
-      } else {
-        realAns = [0, 1]
-        document.getElementById('clar').innerText = "Fosc"
-      }
+  } else {
+    if (result == "clar") {
+      realAns = [0, 1]
+      document.getElementById('clar').innerText = "Fosc"
     } else {
-      if (result == "clar") {
-        realAns = [0, 1]
-        document.getElementById('clar').innerText = "Fosc"
-      } else {
-        realAns = [1, 0]
-        document.getElementById('clar').innerText = "Clar"
-      }
+      realAns = [1, 0]
+      document.getElementById('clar').innerText = "Clar"
     }
-    console.table(realAns);
+  }
+  console.table(realAns);
 
-    //3.
-    nn.backpropagation(answer, realAns)
+  nn.backpropagation(answer, realAns)
 
-    //4.
-    getColor()
-  }, 25);
-  //1.
-  
 }
 
 function run() {
@@ -118,7 +125,7 @@ function run() {
   }
 
   console.log(`background r: ${r}, g: ${g}, b:${b}, is ${perc1} clar`)
-  
+
 }
 
 function getColor() {
@@ -145,12 +152,6 @@ function getColor() {
   }
 }
 
-function createButtons() {
-  weights_ih1 = createButton('weights input - hidden 1').attribute('onclick', 'nn.ih1_weights.print()');
-  weights_h1h2 = createButton('weights hidden 1 - hidden 2').attribute('onclick', 'nn.h1h2_weights.print()');
-  weights_ih1 = createButton('weights hidden 2 - output').attribute('onclick', 'nn.h2o_weights.print()');
-}
-
 function displayW(a) {
   a.print()
   //console.log(a.data)
@@ -160,6 +161,11 @@ function refresh() {
   r = document.getElementById('range_red').value
   g = document.getElementById('range_green').value
   b = document.getElementById('range_blue').value
+
+  // document.getElementById('redValue').innerText = r
+  // document.getElementById('greenValue').innerText = g
+  // document.getElementById('blueValue').innerText = b
+
   background(r, g, b)
   color = false
   run()

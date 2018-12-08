@@ -19,6 +19,8 @@ window.onload = function() {
   } catch(e) {
     setTimeout(loadLanguage('cat'), 25)
   }
+
+  refresh();
 };
 
 let num;

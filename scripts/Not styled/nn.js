@@ -26,15 +26,12 @@ function dsigmoid(y) {
 };
 
 function crossEntropy(yhat, y) {
-  if (yhat instanceof Matrix && y instanceof Matrix && yhat.rows === 2 && y.rows === 2) {
-    let result = new Matrix(2, 1);
-    for (let i = 0; i < result.rows; i++) {
-      result.data[i][0] = -(y.data[i][0]*Math.log10(yhat[i]) + (1 - y.data[i]) * Math.log10(1 - yhat[i]));
-    return result;
-    };
-  } else {
-    console.log("Something went wrong...");
-  } 
+   let result = new Matrix(2, 1);
+   for (let i = 0; i < result.rows; i++) {
+     result.data[i][0] = -(y.data[i][0]*Math.log10(yhat.data[i]) + (1 - y.data[i]) * Math.log10(1 - yhat.data[i]));
+   };
+   return result;
+
 };
 
 class NeuralNetwork {
@@ -46,15 +43,12 @@ class NeuralNetwork {
     this.output_nodes = output_nodes;
 
     this.ih1_weights = new Matrix(this.hidden_nodes1, this.inputs);
-    /*this.ih1_weights.randomize()*/
     this.h1h2_weights = new Matrix(this.hidden_nodes2, this.hidden_nodes1);
-    /*this.h1h2_weights.randomize()*/
     this.h2o_weights = new Matrix(this.output_nodes, this.hidden_nodes2);
-    /*this.h2o_weights.randomize()*/
   };
 
   feedforward(input_values) {
-    
+
     /*console.clear()*/
 
     /*Transforms input array into a 3x1 matrix*/
@@ -62,7 +56,7 @@ class NeuralNetwork {
     for (let i = 0; i < input_values.length; i++) {
         this.input_values.data[i][0] = input_values[i];
     };
-    
+
     /* Normalizes the values of the input matrix by dividing each one by 255 (max rgb value) */
     this.input_values.map(normalize);
 
@@ -86,37 +80,52 @@ class NeuralNetwork {
   };
 
   backpropagation(ans, realAns) {
-    let learning_rate = 0.1;
+    let learning_rate = 0.01;
 
-    /*  */
+    /*Get the guess from the feedforward and the real answer from the user and make a matrix for each one*/
     this.guess = Matrix.fromArray(ans);
     this.realAns = Matrix.fromArray(realAns);
 
-    //2.
-    this.outErr = crossEntropy(this.guess, this.realAns);
+    /*Calculate the error of every layer*/
+    //this.outErr = crossEntropy(this.guess, this.realAns);
 
-    //3.
-    this.h2o_weights_t = Matrix.transpose(this.h2o_weights);
+    this.h2o_weights_t = Matrix.transpose(this.h2o_weights)
+    this.h1h2_weights_t = Matrix.transpose(this.h1h2_weights)
+    this.ih1_weights_t = Matrix.transpose(this.ih1_weights)
+    this.outErr = Matrix.subtract(this.realAns, this.guess);
     this.err_h2 = Matrix.multiply(this.h2o_weights_t, this.outErr);
-
-    this.h1h2_weights_t = Matrix.transpose(this.h1h2_weights);
     this.err_h1 = Matrix.multiply(this.h1h2_weights_t, this.err_h2);
-
-    //4.
-    this.ih1_weights_t = Matrix.transpose(this.ih1_weights);
     this.err_int = Matrix.multiply(this.ih1_weights_t, this.err_h1);
 
-    //5.
-    let gradients = Matrix.map(this.guess, dsigmoid);
-
-    gradients.multiply(this.outErr);
-
-    gradients.multiply(learning_rate);
-
+    /*Calculate the delta weights for the hidden2 - output weights
+        DeltaWeights = lr * error * gradient * hidden transposed
+        lr = scalar number
+        error = vector
+        gradient = vector
+        hidden transposed = linear matrix
+    */
+    let gradients1 = Matrix.map(this.guess, dsigmoid);
+    gradients1.multiply(this.outErr);
+    gradients1.multiply(learning_rate);
     let hidden2_T = Matrix.transpose(this.hidden2_ans);
-    let weights_h2o_deltas = Matrix.multiply(gradients, hidden2_T);
+    this.weights_h2o_deltas = Matrix.multiply(gradients1, hidden2_T);
+    this.h2o_weights.add(this.weights_h2o_deltas);
 
-    this.h2o_weights.add(weights_h2o_deltas);
+    /*Calculate the delta weights for the hidden 1 - hidden 2 weights*/
+    let gradients2 = Matrix.map(this.hidden2_ans, dsigmoid)
+    gradients2.multiply(this.err_h2)
+    gradients2.multiply(learning_rate)
+    let hidden1_T = Matrix.transpose(this.hidden1_ans)
+    this.weigths_h1h2_deltas = Matrix.multiply(gradients2, hidden1_T)
+    this.h1h2_weights.add(this.weigths_h1h2_deltas)
+
+    /*Calculate the delta weights for the input - hidden 1 weights*/
+    let gradients3 = Matrix.map(this.hidden1_ans, dsigmoid)
+    gradients3.multiply(this.err_h1)
+    gradients3.multiply(learning_rate)
+    let inputs_T = Matrix.transpose(this.input_values)
+    this.weigths_ih1_deltas = Matrix.multiply(gradients2, hidden1_T)
+    this.ih1_weights.add(this.weigths_ih1_deltas)
 
     saveWeights();
   };

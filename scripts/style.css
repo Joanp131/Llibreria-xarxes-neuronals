@@ -54,6 +54,10 @@ h2 {
 	position: fixed;
 	z-index: -1;
 }
+.colorValue {
+	height: 100%;
+	width: 24px;
+}
 .dropdown {
   float: right;
   overflow: hidden;

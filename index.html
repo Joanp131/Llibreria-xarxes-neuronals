@@ -97,9 +97,18 @@
                 <!-- Totes les "caixes" d'informació-->
                 <button id="coll0but" class="collapsible"></button>
                 <div id="collapse0" class="content" style="align-content: center; text-align: center;">
-                    <input type="range" name="red" min="0" max="250" class="colorRange" id="range_red" oninput="refresh()" onchange="refresh()">
-                    <input type="range" name="green" min="0" max="250" class="colorRange" id="range_green" oninput="refresh()" onchange="refresh()">
-                    <input type="range" name="blue" min="0" max="250" class="colorRange" id="range_blue" oninput="refresh()" onchange="refresh()">
+                  <div>
+                    <input type="range" name="red" min="0" max="255" class="colorRange" id="range_red" oninput="refresh()" onchange="refresh()">
+                    <span id="redValue" class="colorValue"></span>
+                  </div>
+                  <div>
+                    <input type="range" name="green" min="0" max="255" class="colorRange" id="range_green" oninput="refresh()" onchange="refresh()">
+                    <span id="greenValue" class="colorValue"></span>
+                  </div>
+                  <div>
+                    <input type="range" name="blue" min="0" max="255" class="colorRange" id="range_blue" oninput="refresh()" onchange="refresh()">
+                    <span id="blueValue" class="colorValue"></span>
+                  </div>
                 </div>
 
                 <button id="coll1but" class="collapsible">Xarxes neuronals artificials</button>

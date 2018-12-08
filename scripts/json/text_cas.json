@@ -4,7 +4,10 @@
 	"runBut":"Prueba",
 	"trainBut":"Entrena",
 	"resultText":"Resultado:",
-	"atention":"Atención!",
-	"warn":"La red neuronal no está treminada y, aunque sempre da un resultado, este puede no ser correcto. En caso que lo fuera, seria casualidad. Pronto estará terminada",
-	"coll0but":"Einas de colores"
+	"coll0but":"Einas de colores",
+	"coll1but":"Qué es esto?",
+	"coll2but":"Sobre esta red neuronal",
+	"coll3but":"Funcionamiento de esta red neuronal",
+	"coll4but":"Debugger",
+	"text1":"Esta página web es una red neuronal.<br><br>Las redes neuronales són programas que són capaces de aprender y cumplir una función, de manera que si se equivocan, rectifican.<br><br>Esta red neuronal está programada para decir si el color del requadre és clar o és fosc."
 }
