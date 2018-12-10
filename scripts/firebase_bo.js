@@ -1,15 +1,12 @@
-window.onload = function() {
-  var config = {
-      apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
-      authDomain: "weights-b4e62.firebaseapp.com",
-      databaseURL: "https://weights-b4e62.firebaseio.com",
-      projectId: "weights-b4e62",
-      storageBucket: "weights-b4e62.appspot.com",
-      messagingSenderId: "529084520007"
-  }
-  firebase.initializeApp(config);
-  retrieveData()
+var config = {
+  apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
+  authDomain: "weights-b4e62.firebaseapp.com",
+  databaseURL: "https://weights-b4e62.firebaseio.com",
+  projectId: "weights-b4e62",
+  storageBucket: "weights-b4e62.appspot.com",
+  messagingSenderId: "529084520007"
 }
+firebase.initializeApp(config);
 
 let num;
 

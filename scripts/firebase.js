@@ -1,8 +1,8 @@
 window.onload = function() {
-  
+  let me = [a, s, d, f, h]
   try {
     loadLanguage('cat');
-  } catch(e) {
+  } catch (e) {
     setTimeout(loadLanguage('cat'), 25)
   }
 
@@ -10,19 +10,19 @@ window.onload = function() {
 };
 
 var config = {
-    apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
-    authDomain: "weights-b4e62.firebaseapp.com",
-    databaseURL: "https://weights-b4e62.firebaseio.com",
-    projectId: "weights-b4e62",
-    storageBucket: "weights-b4e62.appspot.com",
-    messagingSenderId: "529084520007"
-  }
-  firebase.initializeApp(config);
+  apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
+  authDomain: "weights-b4e62.firebaseapp.com",
+  databaseURL: "https://weights-b4e62.firebaseio.com",
+  projectId: "weights-b4e62",
+  storageBucket: "weights-b4e62.appspot.com",
+  messagingSenderId: "529084520007"
+}
+firebase.initializeApp(config);
 
-  database = firebase.database();
-  let ref = database.ref('weights');
+database = firebase.database();
+let ref = database.ref('weights');
 
-  ref.on('value', gotData, err => console.error(err))
+ref.on('value', gotData, err => console.error(err))
 
 let num;
 
@@ -40,13 +40,13 @@ function saveWeights() {
     wh2o: nn.h2o_weights.data,
     color: colors,
     num: num
-}
+  }
 
   let send = weightsDatabase.update(weights, finished)
 }
 
 function finished(err) {
-  if(err) {
+  if (err) {
     console.warn("Ooops, something went wrong with firebase!");
     console.error(err)
   } else {
