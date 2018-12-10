@@ -8,6 +8,7 @@ let color = true
 
 
 function setup() {
+  loadLanguage('cat');
   /*
     Function setup. Principals funcions:
       1. Generar el canvas a on anirà el color
@@ -29,6 +30,8 @@ function setup() {
 
   //3
   nn = new NeuralNetwork(3, 2, 4, 2);
+
+  refresh();
 }
 
 function train() {

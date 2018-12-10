@@ -1,5 +1,15 @@
 window.onload = function() {
-  var config = {
+  
+  try {
+    loadLanguage('cat');
+  } catch(e) {
+    setTimeout(loadLanguage('cat'), 25)
+  }
+
+  refresh();
+};
+
+var config = {
     apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
     authDomain: "weights-b4e62.firebaseapp.com",
     databaseURL: "https://weights-b4e62.firebaseio.com",
@@ -12,16 +22,7 @@ window.onload = function() {
   database = firebase.database();
   let ref = database.ref('weights');
 
-  ref.on('value', gotData, errData)
-
-  try {
-    loadLanguage('cat');
-  } catch(e) {
-    setTimeout(loadLanguage('cat'), 25)
-  }
-
-  refresh();
-};
+  ref.on('value', gotData, err => console.error(err))
 
 let num;
 
@@ -65,8 +66,4 @@ function gotData(data) {
   nn.h2o_weights.data = weights.wh2o
   num = weights.num
 
-}
-
-function errData(err) {
-  console.log("Error")
 }
