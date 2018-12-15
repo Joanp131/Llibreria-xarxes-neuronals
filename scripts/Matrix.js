@@ -1,17 +1,3 @@
-/* Operacions actuals de la llibreria de matrius:
-  1. Convert: Converteix un "array" en forma de matriu en matriu
-  2. FramArray: Converteix un array en matriu
-  3. ToArray: Converteix una matriu en array
-  4. Transpose: Transposa una matriu
-  5. Randomize: Assigna valors random a tots els nombres d'una matriu
-  6. Add: Suma dues matrius. El resultat queda a la primera matriu
-  7. subtract: Resta dues matrius. Retorna una nova matriu.
-  8. Multiply: Multiplica dues matrius. Retorna una nova matriu com a resultat.
-  9. Multiply: Fa la multiplicació escalar d'una matriu. Aquesta funció canvia la matriu
-  10. Map: Fa passar cada un dels nombres per una funció assignada
-  11. Print: Imprimeix a la consola la matriu
-*/
-
 class Matrix {
   //Initialize the matrix
   constructor(rows, cols) {
@@ -62,7 +48,6 @@ class Matrix {
     return arr
   }
 
-  //Transpose Matrix
   static transpose(matrix) {
     let result = new Matrix(matrix.cols, matrix.rows)
 
@@ -74,7 +59,6 @@ class Matrix {
     return result
   }
 
-  //Randomixe Matrix
   randomize(n){
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -84,8 +68,7 @@ class Matrix {
   }
 
   //Addition
-add(n){
-
+  add(n){
     if(n instanceof Matrix) {
       for (let i = 0; i < this.rows; i++) {
         for (let j = 0; j < this.cols; j++) {
