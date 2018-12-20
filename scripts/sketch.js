@@ -117,7 +117,7 @@ function autoTrain() {
 
 function autoTrainData() {
   //Convert color to HSV value
-  let v = rgb2hsv(r, g, b).v
+  v = rgb2hsv(r, g, b).v
   let answerDes;
   //Depending on the "v" value the color is bright or dark
   if(v >= 50) {
@@ -213,7 +213,7 @@ function getColor() {
     document.getElementById('range_blue').value = b
   }
 
-  console.log(rgb2hsv(r, g, b))
+  console.log(rgb2hsv(r, g, b).v)
 }
 
 function displayW(a) {
