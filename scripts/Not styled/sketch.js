@@ -145,6 +145,8 @@ function getColor() {
     document.getElementById('range_green').value = g
     document.getElementById('range_blue').value = b
   }
+
+  console.log(rgb2hsv(r, g, b))
 }
 
 function displayW(a) {
@@ -164,4 +166,44 @@ function refresh() {
   background(r, g, b)
   color = false
   run()
+}
+
+function rgb2hsv () {
+    var rr, gg, bb,
+        a = arguments[0] / 255,
+        c = arguments[1] / 255,
+        d = arguments[2] / 255,
+        h, s,
+        v = Math.max(a, c, d),
+        diff = v - Math.min(a, c, d),
+        diffc = function(i){
+            return (v - i) / 6 / diff + 1 / 2;
+        };
+
+    if (diff == 0) {
+        h = s = 0;
+    } else {
+        s = diff / v;
+        rr = diffc(a);
+        gg = diffc(c);
+        bb = diffc(d);
+
+        if (a === v) {
+            h = bb - gg;
+        }else if (c === v) {
+            h = (1 / 3) + rr - bb;
+        }else if (d === v) {
+            h = (2 / 3) + gg - rr;
+        }
+        if (h < 0) {
+            h += 1;
+        }else if (h > 1) {
+            h -= 1;
+        }
+    }
+    return {
+        h: Math.round(h * 360),
+        s: Math.round(s * 100),
+        v: Math.round(v * 100)
+    };
 }
