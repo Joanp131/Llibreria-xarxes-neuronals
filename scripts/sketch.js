@@ -95,13 +95,13 @@ function train() {
 }
 
 function autoTrain() {
-  var hola = 0;
+  hola = 0;
   /*Ask user for reiterations (n) --> do train function n times with the hsv color value as brightness*/
 
   //Get the buttons into variables
   train = document.getElementById("autoBut")
   stop = document.getElementById('stopBut')
-  let loop = true;
+  loop = true;
 
   //Toggle de displayed button
   train.style.display = "none"
@@ -140,6 +140,7 @@ function autoTrainData() {
     //console.clear();
     stop.style.display = "none"
     train.style.display = "block"
+    saveWeights();
   })
 
   //Recall itself to train again
