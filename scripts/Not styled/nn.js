@@ -127,6 +127,5 @@ class NeuralNetwork {
     this.weigths_ih1_deltas = Matrix.multiply(gradients2, hidden1_T)
     this.ih1_weights.add(this.weigths_ih1_deltas)
 
-    saveWeights();
   };
 }

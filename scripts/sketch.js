@@ -90,21 +90,70 @@ function train() {
 
   nn.backpropagation(answer, realAns)
 
+  saveWeights();
+
 }
 
 function autoTrain() {
+  var hola = 0;
   /*Ask user for reiterations (n) --> do train function n times with the hsv color value as brightness*/
+
+  //Get the buttons into variables
   train = document.getElementById("autoBut")
   stop = document.getElementById('stopBut')
+  let loop = true;
 
+  //Toggle de displayed button
   train.style.display = "none"
   stop.style.display = "block"
 
+  //Train while the Stop button is not pressed
+  setTimeout(autoTrainData, 2000);
+
+  //Stop function
+
+
+}
+
+function autoTrainData() {
+  //Convert color to HSV value
+  let v = rgb2hsv(r, g, b).v
+  let answerDes;
+  //Depending on the "v" value the color is bright or dark
+  if(v >= 50) {
+    answerDes = [1,0]
+  } else if (v < 50){
+    answerDes = [0,1]
+  }
+
+  //Run NN
+  let inp =  [r, g, b]
+  ansNN = nn.feedforward(inp);
+  nn.backpropagation(ansNN, answerDes)
+
+  //change the color to run again
+  getColor();
+
+  //If stop button is clicked, stop
   stop.addEventListener("click", _=> {
+    loop = false;
+    //console.clear();
     stop.style.display = "none"
     train.style.display = "block"
   })
 
+  //Recall itself to train again
+  if (loop) {
+    //console.log("Train loop!")
+    hola++
+
+    if (hola % 1000 == 0) {
+      console.log("1000 loops, Saving weights!")
+      saveWeights()
+    }
+
+    setTimeout(autoTrainData, 5)
+  }
 }
 
 function run() {
@@ -163,7 +212,7 @@ function getColor() {
     document.getElementById('range_blue').value = b
   }
 
-  console.log(rgb2hsv(r, g, b))
+  //console.log(rgb2hsv(r, g, b))
 }
 
 function displayW(a) {
