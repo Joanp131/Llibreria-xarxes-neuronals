@@ -16,6 +16,7 @@ function setup() {
   runBut = createButton('').attribute('onclick', 'run()').attribute('id', 'runBut').attribute('class', 'main').parent(father[1])
   trainBut = createButton('').attribute('onclick', 'train()').attribute('id', 'trainBut').attribute('class', 'main').parent(father[1])
   autoTrainBut = createButton('').attribute('onclick', 'autoTrain()').attribute('id', 'autoBut').attribute('class', 'main').parent(father[1])
+  stopBut = createButton('').attribute('onclick', 'autoTrain()').attribute('id', 'stopBut').attribute('class', 'main').parent(father[1]).attribute("style", "display: none")
 
   //2
   getColor()
@@ -93,15 +94,17 @@ function train() {
 
 function autoTrain() {
   /*Ask user for reiterations (n) --> do train function n times with the hsv color value as brightness*/
-  button = document.getElementById("autoBut")
+  train = document.getElementById("autoBut")
+  stop = document.getElementById('stopBut')
 
-  button.style.display = "none"
+  train.style.display = "none"
+  stop.style.display = "block"
 
-  setTimeout(hola, 3000)
-}
+  stop.addEventListener("click", _=> {
+    stop.style.display = "none"
+    train.style.display = "block"
+  })
 
-function hola() {
-  button.style.display = "block"
 }
 
 function run() {
