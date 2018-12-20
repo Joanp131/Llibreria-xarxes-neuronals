@@ -213,7 +213,7 @@ function getColor() {
     document.getElementById('range_blue').value = b
   }
 
-  console.log(rgb2hsv(r, g, b).v)
+  //console.log(rgb2hsv(r, g, b).v)
 }
 
 function displayW(a) {
