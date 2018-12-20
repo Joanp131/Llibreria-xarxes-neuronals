@@ -140,7 +140,7 @@ function autoTrainData() {
     //console.clear();
     stop.style.display = "none"
     train.style.display = "block"
-    saveWeights();
+    //saveWeights();
   })
 
   //Recall itself to train again
@@ -213,7 +213,7 @@ function getColor() {
     document.getElementById('range_blue').value = b
   }
 
-  //console.log(rgb2hsv(r, g, b))
+  console.log(rgb2hsv(r, g, b))
 }
 
 function displayW(a) {
