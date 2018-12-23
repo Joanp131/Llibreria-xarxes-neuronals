@@ -116,9 +116,15 @@ function autoTrain() {
 }
 
 function autoTrainData() {
+
+  let answerDes;
+
+  //change the color to run again
+  getColor();
+
   //Convert color to HSV value
   v = rgb2hsv(r, g, b).v
-  let answerDes;
+
   //Depending on the "v" value the color is bright or dark
   if(v >= 50) {
     answerDes = [1,0]
@@ -131,16 +137,13 @@ function autoTrainData() {
   ansNN = nn.feedforward(inp);
   nn.backpropagation(ansNN, answerDes)
 
-  //change the color to run again
-  getColor();
-
   //If stop button is clicked, stop
   stop.addEventListener("click", _=> {
     loop = false;
     //console.clear();
     stop.style.display = "none"
     train.style.display = "block"
-    saveWeights();
+    //saveWeights();
   })
 
   //Recall itself to train again
