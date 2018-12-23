@@ -140,13 +140,17 @@ function autoTrainData() {
     //console.clear();
     stop.style.display = "none"
     train.style.display = "block"
-    //saveWeights();
+    saveWeights();
   })
 
   //Recall itself to train again
   if (loop) {
     //console.log("Train loop!")
     hola++
+    v = 0;
+    answerDes = []
+    inp = []
+    ansNN = []
 
     if (hola % 1000 == 0) {
       console.log("1000 loops, Saving weights!")
