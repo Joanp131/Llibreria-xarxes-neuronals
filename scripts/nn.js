@@ -1,1 +1,131 @@
-var _0xcab3=["\x65\x78\x70","\x6C\x65\x6E\x67\x74\x68","\x72\x6F\x77\x73","\x64\x61\x74\x61","\x6C\x6F\x67\x31\x30","\x69\x6E\x70\x75\x74\x73","\x68\x69\x64\x64\x65\x6E\x5F\x63\x6F\x6C\x73","\x68\x69\x64\x64\x65\x6E\x5F\x6E\x6F\x64\x65\x73\x31","\x68\x69\x64\x64\x65\x6E\x5F\x6E\x6F\x64\x65\x73\x32","\x6F\x75\x74\x70\x75\x74\x5F\x6E\x6F\x64\x65\x73","\x69\x68\x31\x5F\x77\x65\x69\x67\x68\x74\x73","\x68\x31\x68\x32\x5F\x77\x65\x69\x67\x68\x74\x73","\x68\x32\x6F\x5F\x77\x65\x69\x67\x68\x74\x73","\x69\x6E\x70\x75\x74\x5F\x76\x61\x6C\x75\x65\x73","\x6D\x61\x70","\x68\x69\x64\x64\x65\x6E\x31\x5F\x61\x6E\x73","\x6D\x75\x6C\x74\x69\x70\x6C\x79","\x68\x69\x64\x64\x65\x6E\x32\x5F\x61\x6E\x73","\x6F\x75\x74\x70\x75\x74\x5F\x61\x6E\x73","\x74\x6F\x41\x72\x72\x61\x79","\x72\x65\x73\x75\x6C\x74\x5F\x61\x72\x72\x61\x79","\x67\x75\x65\x73\x73","\x66\x72\x6F\x6D\x41\x72\x72\x61\x79","\x72\x65\x61\x6C\x41\x6E\x73","\x68\x32\x6F\x5F\x77\x65\x69\x67\x68\x74\x73\x5F\x74","\x74\x72\x61\x6E\x73\x70\x6F\x73\x65","\x68\x31\x68\x32\x5F\x77\x65\x69\x67\x68\x74\x73\x5F\x74","\x69\x68\x31\x5F\x77\x65\x69\x67\x68\x74\x73\x5F\x74","\x6F\x75\x74\x45\x72\x72","\x73\x75\x62\x74\x72\x61\x63\x74","\x65\x72\x72\x5F\x68\x32","\x65\x72\x72\x5F\x68\x31","\x65\x72\x72\x5F\x69\x6E\x74","\x77\x65\x69\x67\x68\x74\x73\x5F\x68\x32\x6F\x5F\x64\x65\x6C\x74\x61\x73","\x61\x64\x64","\x77\x65\x69\x67\x74\x68\x73\x5F\x68\x31\x68\x32\x5F\x64\x65\x6C\x74\x61\x73","\x77\x65\x69\x67\x74\x68\x73\x5F\x69\x68\x31\x5F\x64\x65\x6C\x74\x61\x73"];function normalize(_0xbff4x2){return _0xbff4x2/= 255}function sigmoid(_0xbff4x4){return 1/ (1+ Math[_0xcab3[0]](-_0xbff4x4))}function softmax(_0xbff4x6){let _0xbff4x7=0;let _0xbff4x8=[];for(let _0xbff4x9=0;_0xbff4x9< _0xbff4x6[_0xcab3[1]];_0xbff4x9++){_0xbff4x7+= Math[_0xcab3[0]](_0xbff4x6[_0xbff4x9])};for(let _0xbff4x9=0;_0xbff4x9< _0xbff4x6[_0xcab3[1]];_0xbff4x9++){_0xbff4x8[_0xbff4x9]= Math[_0xcab3[0]](_0xbff4x6[_0xbff4x9])/ _0xbff4x7};return _0xbff4x8}function dsigmoid(_0xbff4xb){return _0xbff4xb* (1- _0xbff4xb)}function crossEntropy(_0xbff4xd,_0xbff4xb){let _0xbff4x8= new Matrix(2,1);for(let _0xbff4x9=0;_0xbff4x9< _0xbff4x8[_0xcab3[2]];_0xbff4x9++){_0xbff4x8[_0xcab3[3]][_0xbff4x9][0]=  -(_0xbff4xb[_0xcab3[3]][_0xbff4x9][0]* Math[_0xcab3[4]](_0xbff4xd[_0xcab3[3]][_0xbff4x9])+ (1- _0xbff4xb[_0xcab3[3]][_0xbff4x9])* Math[_0xcab3[4]](1- _0xbff4xd[_0xcab3[3]][_0xbff4x9]))};return _0xbff4x8}class NeuralNetwork{constructor(_0xbff4xf,_0xbff4x10,_0xbff4x11,_0xbff4x12){this[_0xcab3[5]]= _0xbff4xf;this[_0xcab3[6]]= _0xbff4x10;this[_0xcab3[7]]= _0xbff4x11;this[_0xcab3[8]]= _0xbff4x11;this[_0xcab3[9]]= _0xbff4x12;this[_0xcab3[10]]=  new Matrix(this[_0xcab3[7]],this[_0xcab3[5]]);this[_0xcab3[11]]=  new Matrix(this[_0xcab3[8]],this[_0xcab3[7]]);this[_0xcab3[12]]=  new Matrix(this[_0xcab3[9]],this[_0xcab3[8]])}feedforward(_0xbff4x14){this[_0xcab3[13]]=  new Matrix(_0xbff4x14[_0xcab3[1]],1);for(let _0xbff4x9=0;_0xbff4x9< _0xbff4x14[_0xcab3[1]];_0xbff4x9++){this[_0xcab3[13]][_0xcab3[3]][_0xbff4x9][0]= _0xbff4x14[_0xbff4x9]};this[_0xcab3[13]][_0xcab3[14]](normalize);this[_0xcab3[15]]= Matrix[_0xcab3[16]](this[_0xcab3[10]],this[_0xcab3[13]]);this[_0xcab3[15]][_0xcab3[14]](sigmoid);this[_0xcab3[17]]= Matrix[_0xcab3[16]](this[_0xcab3[11]],this[_0xcab3[15]]);this[_0xcab3[17]][_0xcab3[14]](sigmoid);this[_0xcab3[18]]= Matrix[_0xcab3[16]](this[_0xcab3[12]],this[_0xcab3[17]]);let _0xbff4x15=this[_0xcab3[18]][_0xcab3[19]]();this[_0xcab3[20]]= softmax(_0xbff4x15);return this[_0xcab3[20]]}backpropagation(_0xbff4x17,_0xbff4x18){let _0xbff4x19=0.01;this[_0xcab3[21]]= Matrix[_0xcab3[22]](_0xbff4x17);this[_0xcab3[23]]= Matrix[_0xcab3[22]](_0xbff4x18);this[_0xcab3[24]]= Matrix[_0xcab3[25]](this[_0xcab3[12]]);this[_0xcab3[26]]= Matrix[_0xcab3[25]](this[_0xcab3[11]]);this[_0xcab3[27]]= Matrix[_0xcab3[25]](this[_0xcab3[10]]);this[_0xcab3[28]]= Matrix[_0xcab3[29]](this[_0xcab3[23]],this[_0xcab3[21]]);this[_0xcab3[30]]= Matrix[_0xcab3[16]](this[_0xcab3[24]],this[_0xcab3[28]]);this[_0xcab3[31]]= Matrix[_0xcab3[16]](this[_0xcab3[26]],this[_0xcab3[30]]);this[_0xcab3[32]]= Matrix[_0xcab3[16]](this[_0xcab3[27]],this[_0xcab3[31]]);let _0xbff4x1a=Matrix[_0xcab3[14]](this[_0xcab3[21]],dsigmoid);_0xbff4x1a[_0xcab3[16]](this[_0xcab3[28]]);_0xbff4x1a[_0xcab3[16]](_0xbff4x19);let _0xbff4x1b=Matrix[_0xcab3[25]](this[_0xcab3[17]]);this[_0xcab3[33]]= Matrix[_0xcab3[16]](_0xbff4x1a,_0xbff4x1b);this[_0xcab3[12]][_0xcab3[34]](this[_0xcab3[33]]);let _0xbff4x1c=Matrix[_0xcab3[14]](this[_0xcab3[17]],dsigmoid);_0xbff4x1c[_0xcab3[16]](this[_0xcab3[30]]);_0xbff4x1c[_0xcab3[16]](_0xbff4x19);let _0xbff4x1d=Matrix[_0xcab3[25]](this[_0xcab3[15]]);this[_0xcab3[35]]= Matrix[_0xcab3[16]](_0xbff4x1c,_0xbff4x1d);this[_0xcab3[11]][_0xcab3[34]](this[_0xcab3[35]]);let _0xbff4x1e=Matrix[_0xcab3[14]](this[_0xcab3[15]],dsigmoid);_0xbff4x1e[_0xcab3[16]](this[_0xcab3[31]]);_0xbff4x1e[_0xcab3[16]](_0xbff4x19);let _0xbff4x1f=Matrix[_0xcab3[25]](this[_0xcab3[13]]);this[_0xcab3[36]]= Matrix[_0xcab3[16]](_0xbff4x1c,_0xbff4x1d);this[_0xcab3[10]][_0xcab3[34]](this[_0xcab3[36]]);}}
+function normalize(x) {
+  return x /= 255;
+};
+
+function sigmoid(z) {
+  return 1 / (1 + Math.exp(-z));
+};
+
+function softmax(arr) {
+  let esum = 0;
+  let result = [];
+  for(let i = 0; i < arr.length; i++) {
+    esum += Math.exp(arr[i]);
+  };
+
+  for (let i = 0; i < arr.length; i++) {
+    result[i] = Math.exp(arr[i]) / esum;
+  };
+  return result;
+
+};
+
+function dsigmoid(y) {
+  return y * (1-y);
+
+};
+
+function crossEntropy(yhat, y) {
+   let result = new Matrix(2, 1);
+   for (let i = 0; i < result.rows; i++) {
+     result.data[i][0] = -(y.data[i][0]*Math.log10(yhat.data[i]) + (1 - y.data[i]) * Math.log10(1 - yhat.data[i]));
+   };
+   return result;
+
+};
+
+class NeuralNetwork {
+  constructor(inputs, hidden_cols, hidden_nodes, output_nodes) {
+    this.inputs = inputs;
+    this.hidden_cols = hidden_cols;
+    this.hidden_nodes1 = hidden_nodes;
+    this.hidden_nodes2 = hidden_nodes;
+    this.output_nodes = output_nodes;
+
+    this.ih1_weights = new Matrix(this.hidden_nodes1, this.inputs);
+    this.h1h2_weights = new Matrix(this.hidden_nodes2, this.hidden_nodes1);
+    this.h2o_weights = new Matrix(this.output_nodes, this.hidden_nodes2);
+  };
+
+  feedforward(input_values) {
+
+    /*console.clear()*/
+
+    /*Transforms input array into a 3x1 matrix*/
+    this.input_values = new Matrix(input_values.length, 1);
+    for (let i = 0; i < input_values.length; i++) {
+        this.input_values.data[i][0] = input_values[i];
+    };
+
+    /* Normalizes the values of the input matrix by dividing each one by 255 (max rgb value) */
+    this.input_values.map(normalize);
+
+    /* Calculates the result of the Hidden 1 layer by doing "z = w * x" */
+    this.hidden1_ans = Matrix.multiply(this.ih1_weights, this.input_values);
+    this.hidden1_ans.map(sigmoid);
+
+    /* Calculates the result of the second column of the hidden layer */
+    this.hidden2_ans = Matrix.multiply(this.h1h2_weights, this.hidden1_ans);
+    this.hidden2_ans.map(sigmoid);
+
+    /* Calculates the output and enters the values in an array */
+    this.output_ans = Matrix.multiply(this.h2o_weights, this.hidden2_ans);
+    let output_array = this.output_ans.toArray();
+
+    /* Normalizes the output with the softmax function */
+    this.result_array = softmax(output_array);
+
+    /* Returns the result */
+    return this.result_array;
+  };
+
+  backpropagation(ans, realAns) {
+    let learning_rate = 0.01;
+
+    /*Get the guess from the feedforward and the real answer from the user and make a matrix for each one*/
+    this.guess = Matrix.fromArray(ans);
+    this.realAns = Matrix.fromArray(realAns);
+
+    /*Calculate the error of every layer*/
+    //this.outErr = crossEntropy(this.guess, this.realAns);
+
+    this.h2o_weights_t = Matrix.transpose(this.h2o_weights)
+    this.h1h2_weights_t = Matrix.transpose(this.h1h2_weights)
+    this.ih1_weights_t = Matrix.transpose(this.ih1_weights)
+    this.outErr = Matrix.subtract(this.realAns, this.guess);
+    this.err_h2 = Matrix.multiply(this.h2o_weights_t, this.outErr);
+    this.err_h1 = Matrix.multiply(this.h1h2_weights_t, this.err_h2);
+    this.err_int = Matrix.multiply(this.ih1_weights_t, this.err_h1);
+
+    /*Calculate the delta weights for the hidden2 - output weights
+        DeltaWeights = lr * error * gradient * hidden transposed
+        lr = scalar number
+        error = vector
+        gradient = vector
+        hidden transposed = linear matrix
+    */
+    let gradients1 = Matrix.map(this.guess, dsigmoid);
+    gradients1.multiply(this.outErr);
+    gradients1.multiply(learning_rate);
+    let hidden2_T = Matrix.transpose(this.hidden2_ans);
+    this.weights_h2o_deltas = Matrix.multiply(gradients1, hidden2_T);
+    this.h2o_weights.add(this.weights_h2o_deltas);
+
+    /*Calculate the delta weights for the hidden 1 - hidden 2 weights*/
+    let gradients2 = Matrix.map(this.hidden2_ans, dsigmoid)
+    gradients2.multiply(this.err_h2)
+    gradients2.multiply(learning_rate)
+    let hidden1_T = Matrix.transpose(this.hidden1_ans)
+    this.weigths_h1h2_deltas = Matrix.multiply(gradients2, hidden1_T)
+    this.h1h2_weights.add(this.weigths_h1h2_deltas)
+
+    /*Calculate the delta weights for the input - hidden 1 weights*/
+    let gradients3 = Matrix.map(this.hidden1_ans, dsigmoid)
+    gradients3.multiply(this.err_h1)
+    gradients3.multiply(learning_rate)
+    let inputs_T = Matrix.transpose(this.input_values)
+    this.weigths_ih1_deltas = Matrix.multiply(gradients2, hidden1_T)
+    this.ih1_weights.add(this.weigths_ih1_deltas)
+
+  };
+}
