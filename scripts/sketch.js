@@ -102,14 +102,26 @@ function autoTrain() {
   train = document.getElementById("autoBut")
   stop = document.getElementById('stopBut')
   loop = true;
+  let answerDes;
+  let v;
 
   //Toggle de displayed button
   train.style.display = "none"
   stop.style.display = "block"
 
-  //Train while the Stop button is not pressed
-  setTimeout(autoTrainData, 2000);
+  //If stop button is clicked, stop
+  stop.addEventListener("click", _=> {
+    loop = false;
+    //console.clear();
+    stop.style.display = "none"
+    train.style.display = "block"
+    //saveWeights(); --> If this is active, it causes an error that sends data to firebase more than a thousand times
+  })
 
+  //Train while the Stop button is not pressed
+  if (loop) {
+    setInterval(autoTrainData, 5);
+  }
   //Stop function
 
 
@@ -117,7 +129,7 @@ function autoTrain() {
 
 function autoTrainData() {
 
-  let answerDes;
+  answerDes = [];
 
   //change the color to run again
   getColor();
@@ -126,25 +138,24 @@ function autoTrainData() {
   v = rgb2hsv(r, g, b).v
 
   //Depending on the "v" value the color is bright or dark
-  if(v >= 50) {
-    answerDes = [1,0]
-  } else if (v < 50){
-    answerDes = [0,1]
+  if (v >= 50) {
+    answerDes = [1, 0]
+  } else if (v < 50) {
+    answerDes = [0, 1]
   }
+
+  //Another way to know if the color is dark or light 
+  /*
+  answerDes[0] = v/100
+  answerDes[1] = 1 - answerDes[0]
+  */
 
   //Run NN
   let inp =  [r, g, b]
   ansNN = nn.feedforward(inp);
   nn.backpropagation(ansNN, answerDes)
 
-  //If stop button is clicked, stop
-  stop.addEventListener("click", _=> {
-    loop = false;
-    //console.clear();
-    stop.style.display = "none"
-    train.style.display = "block"
-    //saveWeights();
-  })
+  
 
   //Recall itself to train again
   if (loop) {
@@ -159,8 +170,6 @@ function autoTrainData() {
       console.log("1000 loops, Saving weights!")
       saveWeights()
     }
-
-    setTimeout(autoTrainData, 5)
   }
 }
 
