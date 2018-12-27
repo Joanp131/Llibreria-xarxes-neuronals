@@ -157,9 +157,15 @@ function autoTrainData() {
 
     if (hola % 1000 == 0) {
       console.log("1000 loops, Saving weights!")
-      saveWeights()
-    }
+      if (trained()) {
+        saveWeights()
+        console.log("Neural network is trained")
+        stop.click()
+      } else {
+        saveWeights()
 
+      }
+    }
     setTimeout(autoTrainData, 5)
   }
 }
@@ -280,4 +286,11 @@ function rgb2hsv () {
         s: Math.round(s * 100),
         v: Math.round(v * 100)
     };
+}
+
+function trained() {
+  if ((nn.feedforward([0, 0, 0])[1] > 0.80) && (nn.feedforward([255,255,255])[0] > 0.80)) {
+    return true;
+  }
+  return false;
 }
