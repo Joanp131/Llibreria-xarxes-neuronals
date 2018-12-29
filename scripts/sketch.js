@@ -109,6 +109,8 @@ function autoTrain() {
   train.style.display = "none"
   stop.style.display = "block"
 
+  console.time("Loop took")
+
   //If stop button is clicked, stop
   stop.addEventListener("click", _=> {
     loop = false;
@@ -167,12 +169,14 @@ function autoTrainData() {
     ansNN = []
 
     if (num % 1000 == 0) {
+      console.timeEnd("Loop took")
       console.log("1000 loops, Saving weights!")
       if (trained()) {
         saveWeights()
         console.log("Neural network is trained")
         stop.click()
       } else {
+        console.time("Loop took")
         saveWeights()
 
       }
