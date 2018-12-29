@@ -95,7 +95,7 @@ function train() {
 }
 
 function autoTrain() {
-  hola = 0;
+  num = 0;
   /*Ask user for reiterations (n) --> do train function n times with the hsv color value as brightness*/
 
   //Get the buttons into variables
@@ -160,13 +160,13 @@ function autoTrainData() {
   //Recall itself to train again
   if (loop) {
     //console.log("Train loop!")
-    hola++
+    num++
     v = 0;
     answerDes = []
     inp = []
     ansNN = []
 
-    if (hola % 1000 == 0) {
+    if (num % 1000 == 0) {
       console.log("1000 loops, Saving weights!")
       if (trained()) {
         saveWeights()
