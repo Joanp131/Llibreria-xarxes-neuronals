@@ -103,7 +103,7 @@ function autoTrain() {
   stop = document.getElementById('stopBut')
   loop = true;
   let answerDes;
-  let v;
+  let v, x;
 
   //Toggle de displayed button
   train.style.display = "none"
@@ -112,15 +112,16 @@ function autoTrain() {
   //If stop button is clicked, stop
   stop.addEventListener("click", _=> {
     loop = false;
+    clearInterval(x)
     //console.clear();
     stop.style.display = "none"
     train.style.display = "block"
-    //saveWeights(); --> If this is active, it causes an error that sends data to firebase more than a thousand times
+    //saveWeights(); //--> If this is active, it causes an error that sends data to firebase more than a thousand times
   })
 
   //Train while the Stop button is not pressed
   if (loop) {
-    setInterval(autoTrainData, 5);
+    x = setInterval(autoTrainData, 5);
   }
   //Stop function
 
