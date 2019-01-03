@@ -161,7 +161,6 @@ function autoTrain() {
         } else {
           console.time("Loop took")
           saveWeights(false)
-
         }
       }
     }

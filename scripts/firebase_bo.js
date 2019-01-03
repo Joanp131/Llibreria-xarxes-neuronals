@@ -40,10 +40,9 @@ function saveWeights() {
       console.warn("Ooops, something went wrong with firebase!");
       console.error(err)
     } else {
-      if (!arguments[0]) {
-        continue;
+      if (arguments[0] || arguments[0] == undefined) {
+        console.warn("Data saved successfully to Firebase!")
       }
-      console.warn("Data saved successfully to Firebase!")
     }
   })
 }
