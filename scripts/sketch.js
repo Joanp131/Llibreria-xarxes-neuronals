@@ -96,93 +96,91 @@ function train() {
 
 function autoTrain() {
   num = 0;
+  var millis = 1;
   /*Ask user for reiterations (n) --> do train function n times with the hsv color value as brightness*/
 
   //Get the buttons into variables
-  train = document.getElementById("autoBut")
-  stop = document.getElementById('stopBut')
-  loop = true;
-  let answerDes;
-  let v, x;
+  var train = document.getElementById("autoBut"), //Start button
+    stop = document.getElementById('stopBut'), //Stop button
+    loop = true, //Var to loop while the button is !pressed
+    answerDes, //the desired output for the NN
+    v; //The brightness of the chosed color
 
   //Toggle de displayed button
   train.style.display = "none"
   stop.style.display = "block"
 
-  console.time("Loop took")
+  console.time("Loop took") //Start loop timer
+
+  //Train while the Stop button is not pressed
+  var handle = setInterval(_=> {
+    answerDes = [];
+
+    //change the color to run again
+    getColor();
+
+    //Convert color to HSV value
+    v = rgb2hsv(r, g, b).v
+
+    //Depending on the "v" value the color is bright or dark
+    if (v >= 50) {
+      answerDes = [1, 0]
+    } else if (v < 50) {
+      answerDes = [0, 1]
+    }
+
+    //Another way to know if the color is dark or light
+    /*
+    answerDes[0] = v/100
+    answerDes[1] = 1 - answerDes[0]
+    */
+
+    //Run NN
+    let inp =  [r, g, b]
+    ansNN = nn.feedforward(inp);
+    nn.backpropagation(ansNN, answerDes)
+
+
+
+    //Recall itself to train again
+    if (loop) {
+      //console.log("Train loop!")
+      num++
+      v = 0;
+      answerDes = []
+      inp = []
+      ansNN = []
+
+      if (num % 1000 == 0) {
+        console.timeEnd("Loop took")
+        console.log("1000 loops, Saving weights!")
+        if (trained()) {
+          saveWeights()
+          console.log("Neural network is trained")
+          stop.click()
+        } else {
+          console.time("Loop took")
+          saveWeights(false)
+
+        }
+      }
+    }
+  }, millis);
 
   //If stop button is clicked, stop
   stop.addEventListener("click", _=> {
     loop = false;
-    clearInterval(x)
-    //console.clear();
+    clearInterval(handle)
+    handle = 0
     stop.style.display = "none"
     train.style.display = "block"
-    //saveWeights(); //--> If this is active, it causes an error that sends data to firebase more than a thousand times
   })
-
-  //Train while the Stop button is not pressed
-  if (loop) {
-    x = setInterval(autoTrainData, 5);
-  }
-  //Stop function
-
 
 }
 
-function autoTrainData() {
-
-  answerDes = [];
-
-  //change the color to run again
-  getColor();
-
-  //Convert color to HSV value
-  v = rgb2hsv(r, g, b).v
-
-  //Depending on the "v" value the color is bright or dark
-  if (v >= 50) {
-    answerDes = [1, 0]
-  } else if (v < 50) {
-    answerDes = [0, 1]
-  }
-
-  //Another way to know if the color is dark or light
-  /*
-  answerDes[0] = v/100
-  answerDes[1] = 1 - answerDes[0]
-  */
-
-  //Run NN
-  let inp =  [r, g, b]
-  ansNN = nn.feedforward(inp);
-  nn.backpropagation(ansNN, answerDes)
+function a() {
 
 
-
-  //Recall itself to train again
-  if (loop) {
-    //console.log("Train loop!")
-    num++
-    v = 0;
-    answerDes = []
-    inp = []
-    ansNN = []
-
-    if (num % 1000 == 0) {
-      console.timeEnd("Loop took")
-      console.log("1000 loops, Saving weights!")
-      if (trained()) {
-        saveWeights()
-        console.log("Neural network is trained")
-        stop.click()
-      } else {
-        console.time("Loop took")
-        saveWeights()
-
-      }
-    }
-  }
 }
 
 function run() {

@@ -1,1 +1,49 @@
-var _0x77e3=["\x41\x49\x7A\x61\x53\x79\x43\x6E\x6E\x7A\x35\x6C\x39\x42\x75\x44\x59\x49\x35\x6B\x2D\x36\x35\x47\x50\x46\x31\x6E\x32\x59\x69\x47\x65\x6C\x66\x4D\x57\x6C\x59","\x77\x65\x69\x67\x68\x74\x73\x2D\x62\x34\x65\x36\x32\x2E\x66\x69\x72\x65\x62\x61\x73\x65\x61\x70\x70\x2E\x63\x6F\x6D","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x65\x69\x67\x68\x74\x73\x2D\x62\x34\x65\x36\x32\x2E\x66\x69\x72\x65\x62\x61\x73\x65\x69\x6F\x2E\x63\x6F\x6D","\x77\x65\x69\x67\x68\x74\x73\x2D\x62\x34\x65\x36\x32","\x77\x65\x69\x67\x68\x74\x73\x2D\x62\x34\x65\x36\x32\x2E\x61\x70\x70\x73\x70\x6F\x74\x2E\x63\x6F\x6D","\x35\x32\x39\x30\x38\x34\x35\x32\x30\x30\x30\x37","\x69\x6E\x69\x74\x69\x61\x6C\x69\x7A\x65\x41\x70\x70","\x76\x61\x6C\x75\x65","\x76\x61\x6C","\x64\x61\x74\x61","\x69\x68\x31\x5F\x77\x65\x69\x67\x68\x74\x73","\x77\x69\x68\x31","\x68\x31\x68\x32\x5F\x77\x65\x69\x67\x68\x74\x73","\x77\x68\x31\x68\x32","\x68\x32\x6F\x5F\x77\x65\x69\x67\x68\x74\x73","\x77\x68\x32\x6F","\x6E\x75\x6D","\x65\x72\x72\x6F\x72","\x6F\x6E","\x77\x65\x69\x67\x68\x74\x73","\x72\x65\x66","\x64\x61\x74\x61\x62\x61\x73\x65","\x44\x61\x74\x61\x20\x73\x75\x63\x63\x65\x73\x73\x66\x75\x6C\x6C\x79\x20\x72\x65\x74\x72\x69\x65\x76\x65\x64\x20\x66\x72\x6F\x6D\x20\x46\x69\x72\x65\x62\x61\x73\x65\x20\x41\x70\x70\x21","\x77\x61\x72\x6E","\x4F\x6F\x6F\x70\x73\x2C\x20\x73\x6F\x6D\x65\x74\x68\x69\x6E\x67\x20\x77\x65\x6E\x74\x20\x77\x72\x6F\x6E\x67\x20\x77\x69\x74\x68\x20\x66\x69\x72\x65\x62\x61\x73\x65\x21","\x44\x61\x74\x61\x20\x73\x61\x76\x65\x64\x20\x73\x75\x63\x63\x65\x73\x73\x66\x75\x6C\x6C\x79\x20\x74\x6F\x20\x46\x69\x72\x65\x62\x61\x73\x65\x21","\x75\x70\x64\x61\x74\x65"];var config={apiKey:_0x77e3[0],authDomain:_0x77e3[1],databaseURL:_0x77e3[2],projectId:_0x77e3[3],storageBucket:_0x77e3[4],messagingSenderId:_0x77e3[5]};firebase[_0x77e3[6]](config);let num;function retrieveData(){firebase[_0x77e3[21]]()[_0x77e3[20]](_0x77e3[19])[_0x77e3[18]](_0x77e3[7],(_0x5fc2x4)=>{let _0x5fc2x5=_0x5fc2x4[_0x77e3[8]]();nn[_0x77e3[10]][_0x77e3[9]]= _0x5fc2x5[_0x77e3[11]];nn[_0x77e3[12]][_0x77e3[9]]= _0x5fc2x5[_0x77e3[13]];nn[_0x77e3[14]][_0x77e3[9]]= _0x5fc2x5[_0x77e3[15]];num= _0x5fc2x5[_0x77e3[16]]},(_0x5fc2x6)=>console[_0x77e3[17]](_0x5fc2x6));console[_0x77e3[23]](_0x77e3[22])}function saveWeights(){num++;let _0x5fc2x8=[r,g,b];let _0x5fc2x5={wih1:nn[_0x77e3[10]][_0x77e3[9]],wh1h2:nn[_0x77e3[12]][_0x77e3[9]],wh2o:nn[_0x77e3[14]][_0x77e3[9]],color:_0x5fc2x8,num:num};firebase[_0x77e3[21]]()[_0x77e3[20]](_0x77e3[19])[_0x77e3[26]](_0x5fc2x5,(_0x5fc2x6)=>{if(_0x5fc2x6){console[_0x77e3[23]](_0x77e3[24]);console[_0x77e3[17]](_0x5fc2x6)}else {console[_0x77e3[23]](_0x77e3[25])}})}
+var config = {
+  apiKey: "AIzaSyCnnz5l9BuDYI5k-65GPF1n2YiGelfMWlY",
+  authDomain: "weights-b4e62.firebaseapp.com",
+  databaseURL: "https://weights-b4e62.firebaseio.com",
+  projectId: "weights-b4e62",
+  storageBucket: "weights-b4e62.appspot.com",
+  messagingSenderId: "529084520007"
+}
+firebase.initializeApp(config);
+
+let num;
+
+function retrieveData() {
+  firebase.database().ref('weights').on("value", data => {
+    let weights = data.val()
+
+    nn.ih1_weights.data = weights.wih1
+    nn.h1h2_weights.data = weights.wh1h2
+    nn.h2o_weights.data = weights.wh2o
+    num = weights.num
+  }, err => console.error(err))
+
+  console.warn("Data successfully retrieved from Firebase App!")
+}
+
+function saveWeights() {
+  num++;
+  let colors = [r, g, b];
+
+  let weights = {
+    wih1: nn.ih1_weights.data,
+    wh1h2: nn.h1h2_weights.data,
+    wh2o: nn.h2o_weights.data,
+    color: colors,
+    num: num
+  }
+
+  firebase.database().ref('weights').update(weights, err => {
+    if (err) {
+      console.warn("Ooops, something went wrong with firebase!");
+      console.error(err)
+    } else {
+      if (!arguments[0]) {
+        continue;
+      }
+      console.warn("Data saved successfully to Firebase!")
+    }
+  })
+}
