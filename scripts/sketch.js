@@ -113,64 +113,13 @@ function autoTrain() {
   console.time("Loop took") //Start loop timer
 
   //Train while the Stop button is not pressed
-  var handle = setInterval(_=> {
-    answerDes = [];
-
-    //change the color to run again
-    getColor();
-
-    //Convert color to HSV value
-    v = rgb2hsv(r, g, b).v
-
-    //Depending on the "v" value the color is bright or dark
-    if (v >= 50) {
-      answerDes = [1, 0]
-    } else if (v < 50) {
-      answerDes = [0, 1]
-    }
-
-    //Another way to know if the color is dark or light
-    /*
-    answerDes[0] = v/100
-    answerDes[1] = 1 - answerDes[0]
-    */
-
-    //Run NN
-    let inp =  [r, g, b]
-    ansNN = nn.feedforward(inp);
-    nn.backpropagation(ansNN, answerDes)
-
-
-
-    //Recall itself to train again
-    if (loop) {
-      //console.log("Train loop!")
-      num++
-      v = 0;
-      answerDes = []
-      inp = []
-      ansNN = []
-
-      if (num % 1000 == 0) {
-        console.timeEnd("Loop took")
-        console.log("1000 loops, Saving weights!")
-        if (trained()) {
-          saveWeights()
-          console.log("Neural network is trained")
-          stop.click()
-        } else {
-          console.time("Loop took")
-          saveWeights(false)
-        }
-      }
-    }
-  }, millis);
+  const handle = setInterval(a, millis);
 
   //If stop button is clicked, stop
   stop.addEventListener("click", _=> {
     loop = false;
     clearInterval(handle)
-    handle = 0
+    //handle = 0
     stop.style.display = "none"
     train.style.display = "block"
   })
@@ -178,8 +127,56 @@ function autoTrain() {
 }
 
 function a() {
+  answerDes = [];
+
+  //change the color to run again
+  getColor();
+
+  //Convert color to HSV value
+  v = rgb2hsv(r, g, b).v
+
+  //Depending on the "v" value the color is bright or dark
+  if (v >= 50) {
+    answerDes = [1, 0]
+  } else if (v < 50) {
+    answerDes = [0, 1]
+  }
+
+  //Another way to know if the color is dark or light
+  /*
+  answerDes[0] = v/100
+  answerDes[1] = 1 - answerDes[0]
+  */
+
+  //Run NN
+  let inp =  [r, g, b]
+  ansNN = nn.feedforward(inp);
+  nn.backpropagation(ansNN, answerDes)
 
 
+
+  //Recall itself to train again
+  if (loop) {
+    //console.log("Train loop!")
+    num++
+    v = 0;
+    answerDes = []
+    inp = []
+    ansNN = []
+
+    if (num % 1000 == 0) {
+      console.timeEnd("Loop took")
+      console.log("1000 loops, Saving weights!")
+      if (trained()) {
+        saveWeights()
+        console.log("Neural network is trained")
+        document.getElementById('stopBut').click()
+      } else {
+        console.time("Loop took")
+        saveWeights(false)
+      }
+    }
+  }
 }
 
 function run() {
