@@ -97,7 +97,6 @@ function train() {
 function autoTrain() {
   num = 0;
   var millis = 1;
-  /*Ask user for reiterations (n) --> do train function n times with the hsv color value as brightness*/
 
   //Get the buttons into variables
   var train = document.getElementById("autoBut"), //Start button
@@ -106,10 +105,11 @@ function autoTrain() {
     answerDes, //the desired output for the NN
     v; //The brightness of the chosed color
 
-  //Toggle de displayed button
+  //Toggle the displayed button
   train.style.display = "none"
   stop.style.display = "block"
 
+  //Start loop ms count
   console.time("Loop took") //Start loop timer
 
   //Train while the Stop button is not pressed
@@ -165,6 +165,7 @@ function a() {
     inp = []
     ansNN = []
 
+    //Every 1000 loops
     if (num % 1000 == 0) {
       console.timeEnd("Loop took")
       console.log("1000 loops, Saving weights!")
@@ -219,6 +220,7 @@ function getColor() {
     1. Generar un color rgb random pel fons del canvas
     2. Si el color compleix el rang de rgb, assignar-lo com a color de fons del canvas
   */
+  let toPaint = document.getElementById("color")
 
   //1.
   r = Math.random() * 255
@@ -230,6 +232,7 @@ function getColor() {
     console.error("Something happened while choosing the background color")
     console.log(`red: ${r}, green: ${g}, blue: ${b}`)
   } else {
+    //toPaint.style.backgroundColor = "rgb(r, g, b)"
     background(r, g, b)
     document.getElementById('range_red').value = r
     document.getElementById('range_green').value = g
