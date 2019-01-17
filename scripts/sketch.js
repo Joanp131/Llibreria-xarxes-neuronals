@@ -16,7 +16,7 @@ function setup() {
   runBut = createButton('').attribute('onclick', 'run()').attribute('id', 'runBut').attribute('class', 'main').parent(father[1])
   trainBut = createButton('').attribute('onclick', 'train()').attribute('id', 'trainBut').attribute('class', 'main').parent(father[1])
   autoTrainBut = createButton('').attribute('onclick', 'autoTrain()').attribute('id', 'autoBut').attribute('class', 'main').parent(father[1])
-  stopBut = createButton('').attribute('onclick', 'autoTrain()').attribute('id', 'stopBut').attribute('class', 'main').parent(father[1]).attribute("style", "display: none")
+  stopBut = createButton('').attribute('id', 'stopBut').attribute('class', 'main').parent(father[1]).attribute("style", "display: none")
 
   //2
   getColor()
@@ -118,6 +118,7 @@ function autoTrain() {
   //If stop button is clicked, stop
   stop.addEventListener("click", _=> {
     loop = false;
+    console.timeEnd("Loop took");
     clearInterval(handle)
     //handle = 0
     stop.style.display = "none"
